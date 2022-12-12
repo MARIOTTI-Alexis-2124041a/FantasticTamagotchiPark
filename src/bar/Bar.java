@@ -4,6 +4,11 @@ public abstract class Bar {
     private static final int max;
     private int currentValue;
 
+    public Bar(int max, int currentValue) {
+        this.max = max;
+        this.currentValue = currentValue;
+    }
+
     public int getCurrentValue() {
         return currentValue;
     }
