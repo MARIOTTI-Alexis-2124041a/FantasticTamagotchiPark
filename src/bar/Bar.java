@@ -1,4 +1,4 @@
-package bar;
+package src.bar;
 
 public class Bar {
 }
