@@ -1,4 +1,4 @@
-package src.tamagotchi.elf;
+package tamagotchi.elf;
 
 public class Elf {
 }

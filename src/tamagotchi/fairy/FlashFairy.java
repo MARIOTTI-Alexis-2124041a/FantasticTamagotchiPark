@@ -1,4 +1,4 @@
-package src.tamagotchi.fairy;
+package tamagotchi.fairy;
 
 public class FlashFairy extends Fairy{
 

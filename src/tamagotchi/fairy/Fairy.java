@@ -1,6 +1,6 @@
-package src.tamagotchi.fairy;
+package tamagotchi.fairy;
 
-import src.tamagotchi.Tamagotchi;
+import tamagotchi.Tamagotchi;
 
 public abstract class Fairy extends Tamagotchi {
 }

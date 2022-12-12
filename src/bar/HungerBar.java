@@ -1,4 +1,4 @@
-package src.bar;
+package bar;
 
 public class HungerBar extends Bar {
     public HungerBar() {

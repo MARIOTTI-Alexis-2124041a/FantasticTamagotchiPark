@@ -1,4 +1,4 @@
-package src.bar;
+package bar;
 
 public abstract class Bar {
     private static final int max;

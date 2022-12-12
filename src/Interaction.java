@@ -1,7 +1,7 @@
-package src;
 
-import src.bar.Bar;
-import src.tamagotchi.Tamagotchi;
+
+import bar.Bar;
+import tamagotchi.Tamagotchi;
 
 import java.util.ArrayList;
 import java.util.Scanner;

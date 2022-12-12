@@ -1,4 +1,4 @@
-package src.tamagotchi.type;
+package tamagotchi.type;
 
 public interface Dark {
 
