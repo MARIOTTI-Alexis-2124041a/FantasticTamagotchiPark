@@ -1,5 +1,8 @@
 package tamagotchi;
 import bar.Bar;
+import bar.HappinessBar;
+import bar.HungerBar;
+import bar.TirenessBar;
 import tamagotchi.type.Type;
 
 import java.util.Random;
@@ -8,11 +11,18 @@ public abstract class Tamagotchi {
     private String name;
 
     //Déclaration des Bar
-    private Bar hungerBar;
-    private Bar tirenessBar;
-    private Bar hapinessBar;
+    private Bar hungerBar = new HungerBar();
+    private Bar tirenessBar = new TirenessBar();
+    private Bar hapinessBar = new HappinessBar();
     private Race race;
     private Type type;
+
+
+    public Tamagotchi(String name, Race race, Type type) {
+        this.name = name;
+        this.race = race;
+        this.type = type;
+    }
 
     //Déclaration des méthodes
     public String getName() {
@@ -28,6 +38,18 @@ public abstract class Tamagotchi {
 
     public Bar getHapinessBar() {
         return hapinessBar;
+    }
+
+    public String displayHungerBar() {
+        return hungerBar.displayBar();
+    }
+
+    public String displayTirenessBar() {
+        return tirenessBar.displayBar();
+    }
+
+    public String displayHapinessBar() {
+        return hapinessBar.displayBar();
     }
     public Race getRace() {
         return race;
@@ -78,6 +100,6 @@ public abstract class Tamagotchi {
             hapinessBar.increaseBar(50);
         }
     }
-    abstract public void joke();
+    abstract public String joke(int jokeNumber);
     abstract public String toString();
 }
