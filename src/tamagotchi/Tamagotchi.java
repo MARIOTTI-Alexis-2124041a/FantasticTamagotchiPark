@@ -14,6 +14,13 @@ public abstract class Tamagotchi {
     private Race race;
     private Type type;
 
+
+    public Tamagotchi(String name, Race race, Type type) {
+        this.name = name;
+        this.race = race;
+        this.type = type;
+    }
+
     //Déclaration des méthodes
     public String getName() {
         return name;
@@ -78,6 +85,6 @@ public abstract class Tamagotchi {
             hapinessBar.increaseBar(50);
         }
     }
-    abstract public void joke();
+    abstract public String joke(int jokeNumber);
     abstract public String toString();
 }

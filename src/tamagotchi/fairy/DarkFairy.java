@@ -4,16 +4,20 @@ import bar.Bar;
 import tamagotchi.Race;
 import tamagotchi.type.Type;
 
-public class FlashFairy extends Fairy{
+public class DarkFairy extends Fairy {
 
 
-    public FlashFairy(String name, Race race, Type type) {
-        super(name, race, type);
+    public DarkFairy(String name) {
+        super(name, Race.FAIRY, Type.DARK);
+
     }
-
 
     @Override
     public String joke(int jokeNumber) {
+        switch (jokeNumber) {
+            case 1 :
+
+        }
         return null;
     }
 

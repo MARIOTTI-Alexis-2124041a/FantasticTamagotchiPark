@@ -1,5 +1,9 @@
 package tamagotchi.fairy;
+import bar.Bar;
+import tamagotchi.Race;
 import tamagotchi.Tamagotchi;
+import tamagotchi.type.Type;
+
 import java.util.Random;
 
 public abstract class Fairy extends Tamagotchi {
@@ -7,6 +11,11 @@ public abstract class Fairy extends Tamagotchi {
 
     //Generate random size between 5 and 15
     int wingsSize = new Random().nextInt(15 - 5) + 5;
+
+    public Fairy(String name, Race race, Type type) {
+        super(name, race, type);
+    }
+
 
     public boolean isFlying() {
         return isFlying;
