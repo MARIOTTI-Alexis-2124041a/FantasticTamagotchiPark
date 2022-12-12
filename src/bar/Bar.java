@@ -25,6 +25,15 @@ public abstract class Bar {
         }
     }
 
+    public void decreaseBar(int val) {
+        if (currentValue - val < 0) {
+            currentValue = 0;
+        } else {
+            currentValue -= val;
+        }
+
+    }
+
     /**
      * Returns true if the current value is considered vital (= is under a certain level)
      * @return boolean
