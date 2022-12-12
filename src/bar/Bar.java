@@ -1,7 +1,7 @@
 package bar;
 
 public abstract class Bar {
-    private static final int max;
+    private final int max;
     private int currentValue;
 
     public Bar(int max, int currentValue) {
@@ -11,6 +11,10 @@ public abstract class Bar {
 
     public int getCurrentValue() {
         return currentValue;
+    }
+
+    public int getMax() {
+        return max;
     }
 
     public void increaseBar(int val) {
