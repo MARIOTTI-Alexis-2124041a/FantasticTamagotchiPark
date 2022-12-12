@@ -16,18 +16,15 @@ public abstract class Fairy extends Tamagotchi {
         super(name, race, type);
     }
 
-
     public boolean isFlying() {
         return isFlying;
     }
 
-    public void fly() {
+    public String fly() {
         if (isFlying) {
-            System.out.println("The fairy is already flying");
+            return "The fairy is already flying";
         }
-        else {
-            isFlying = true;
-        }
+        return "The fairy is flying";
     }
 
     public int getWingsSize() {
@@ -42,5 +39,5 @@ public abstract class Fairy extends Tamagotchi {
         return new Random().nextInt(100) + 1;
     }
 
-    abstract void userPower();
+    abstract String userPower();
 }
