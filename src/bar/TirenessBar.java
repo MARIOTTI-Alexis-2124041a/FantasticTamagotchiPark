@@ -15,7 +15,7 @@ public class TirenessBar extends Bar{
         int nbChar = super.getMax() / 5;
         int nbFullChar = super.getCurrentValue() / 5;
         StringBuilder barStr = new StringBuilder("Tireness: ");
-        for (int i = 0; i <= nbChar; ++i) {
+        for (int i = 1; i <= nbChar; ++i) {
             if (i <= nbFullChar) {
                 barStr.append('#');
             } else {

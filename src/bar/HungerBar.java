@@ -16,7 +16,7 @@ public class HungerBar extends Bar {
         int nbChar = super.getMax() / 10;
         int nbFullChar = super.getCurrentValue() / 10;
         StringBuilder barStr = new StringBuilder("Hunger: ");
-        for (int i = 0; i <= nbChar; ++i) {
+        for (int i = 1; i <= nbChar; ++i) {
             if (i <= nbFullChar) {
                 barStr.append('#');
             } else {
