@@ -1,6 +1,10 @@
 package tamagotchi;
+import bar.Bar;
+import tamagotchi.type.Type;
 
-public interface Tamagotchi {
+import java.util.Random;
+
+public abstract class Tamagotchi {
     private String name;
 
     //Déclaration des Bar
@@ -11,23 +15,69 @@ public interface Tamagotchi {
     private Type type;
 
     //Déclaration des méthodes
-    public String getName();
-    public Bar getHungerBar();
+    public String getName() {
+        return name;
+    }
+    public Bar getHungerBar() {
+        return hungerBar;
+    }
 
-    public void setHungerBar(Bar hungerBar);
+    public Bar getTirenessBar() {
+        return tirenessBar;
+    }
 
-    public Bar getTirenessBar();
-    public void setTirenessBar(Bar tirenessBar);
+    public Bar getHapinessBar() {
+        return hapinessBar;
+    }
+    public Race getRace() {
+        return race;
+    }
+    public Type getType() {
+        return type;
+    }
+    public String displayInformation() {
+        return name + "[" + hungerBar.displayBar() + "," + tirenessBar.displayBar() + "," + hapinessBar.displayBar() + "]";
+    }
 
-    public Bar getHapinessBar();
-    public void setHapinessBar(Bar hapinessBar);
-    public Race getRace();
-    public Type getType();
-    public String displayInformation();
-
-    public void feed (int quantity);
-    public void sleep(int time);
-    public void joke();
-    public void pet(int time);
-    public String toString();
+    public void feed (int quantity) {
+        hungerBar.increaseBar(quantity);
+    }
+    public void sleep() {
+        //Number of seconds. Max = 12h
+        int time = new Random().nextInt(43200);
+        //3h
+        if (time < 10800) {
+            tirenessBar.increaseBar(5);
+        }
+        //6h
+        else if (time < 21600){
+            tirenessBar.increaseBar(10);
+        }
+        else if (time < 32400){
+            tirenessBar.increaseBar(15);
+        }
+        else {
+            tirenessBar.increaseBar(20);
+        }
+    }
+    public void pet() {
+        //Number of seconds. Max = 12h
+        int time = new Random().nextInt(43200);
+        //3h
+        if (time < 10800) {
+            hapinessBar.increaseBar(12);
+        }
+        //6h
+        else if (time < 21600){
+            hapinessBar.increaseBar(24);
+        }
+        else if (time < 32400){
+            hapinessBar.increaseBar(36);
+        }
+        else {
+            hapinessBar.increaseBar(50);
+        }
+    }
+    abstract public void joke();
+    abstract public String toString();
 }
