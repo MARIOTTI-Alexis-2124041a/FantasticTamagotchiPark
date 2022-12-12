@@ -1,6 +1,8 @@
 package tamagotchi.elf;
 
+import tamagotchi.Race;
 import tamagotchi.Tamagotchi;
+import tamagotchi.type.Type;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +11,8 @@ public abstract class Elf extends Tamagotchi {
     private final int earSize; //The size of the Elf's ears, between 10 and 20 cm
     private final List<String> retortList;
 
-    public Elf(int earSize) {
+    public Elf(String name, Type type, int earSize) {
+        super(name, Race.ELF, type);
         this.earSize = earSize;
         this.retortList = new ArrayList<>();
         retortList.add("Oh! It's just you...");
