@@ -1,10 +1,11 @@
 package tamagotchi.type;
 
 public enum Type {
-    DARK,
-    LIGTHNING;
+    DARK("Dark"),
+    LIGTHNING("ligthning");
 
-    Type() {
-
+    public final String label;
+    Type(String label) {
+        this.label = label;
     }
 }
