@@ -21,7 +21,8 @@ public interface Tamagotchi {
 
     public Bar getHapinessBar();
     public void setHapinessBar(Bar hapinessBar);
-
+    public Race getRace();
+    public Type getType();
     public String displayInformation();
 
     public void feed (int quantity);
