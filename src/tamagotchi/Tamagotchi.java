@@ -1,33 +1,44 @@
 package src.tamagotchi;
 
-public interface Tamagotchi {
-    private String name;
-
+public abstract class Tamagotchi {
+    String name;
     //Déclaration des Bar
-    private Bar hungerBar;
-    private Bar tirenessBar;
-    private Bar hapinessBar;
-    private Race race;
-    private Type type;
+    Bar hungerBar;
+    Bar tirenessBar;
+    Bar hapinessBar;
+    Race race;
+    Type type;
 
     //Déclaration des méthodes
-    public String getName();
-    public Bar getHungerBar();
+    public String getName() {
+        return name;
+    }
+    public Bar getHungerBar(){
+        return hungerBar;
+    }
 
-    public void setHungerBar(Bar hungerBar);
+    public Bar getTirenessBar() {
+        return tirenessBar;
+    };
 
-    public Bar getTirenessBar();
-    public void setTirenessBar(Bar tirenessBar);
+    public Bar getHapinessBar() {
+        return hapinessBar;
+    }
 
-    public Bar getHapinessBar();
-    public void setHapinessBar(Bar hapinessBar);
-    public Race getRace();
-    public Type getType();
-    public String displayInformation();
+    public Race getRace() {
+        return race;
+    }
+    public Type getType() {
+        return type;
+    }
+    abstract public String displayInformation();
 
-    public void feed (int quantity);
-    public void sleep(int time);
-    public void joke();
-    public void pet(int time);
-    public String toString();
+    public void feed (int quantity) {
+
+    }
+    abstract public void sleep(int time);
+    abstract public void joke();
+    abstract public void pet(int time);
+    @Override
+    abstract public String toString();
 }

@@ -1,4 +1,6 @@
 package src.tamagotchi.fairy;
 
-public class Fairy {
+import src.tamagotchi.Tamagotchi;
+
+public abstract class Fairy extends Tamagotchi {
 }
