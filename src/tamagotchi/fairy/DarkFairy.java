@@ -1,11 +1,9 @@
 package tamagotchi.fairy;
 
-import bar.Bar;
 import tamagotchi.Race;
 import tamagotchi.type.Type;
 
 public class DarkFairy extends Fairy {
-
 
     public DarkFairy(String name) {
         super(name, Race.FAIRY, Type.DARK);
@@ -16,9 +14,19 @@ public class DarkFairy extends Fairy {
     public String joke(int jokeNumber) {
         switch (jokeNumber) {
             case 1 :
-
+                getHapinessBar().decreaseBar(20);
+                break;
+            case 2 :
+                getHapinessBar().decreaseBar(50);
+                break;
+            case 3 :
+                getHapinessBar().increaseBar(20);
+                break;
+            case 4 :
+                getHapinessBar().increaseBar(50);
+                break;
         }
-        return null;
+        return displayHapinessBar();
     }
 
     @Override
@@ -27,7 +35,11 @@ public class DarkFairy extends Fairy {
     }
 
     @Override
-    void userPower() {
-
+    public String userPower() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("=== x x x x xxxxx\n");
+        sb.append("       x\n");
+        sb.append("          x\n");
+        return sb.toString();
     }
 }

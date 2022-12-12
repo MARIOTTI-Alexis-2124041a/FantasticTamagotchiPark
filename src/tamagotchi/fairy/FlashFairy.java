@@ -88,7 +88,8 @@ public class FlashFairy extends Fairy{
     }
 
     @Override
-    void userPower() {
-
+    public String userPower() {
+        StringBuilder sb = new StringBuilder();
+        return sb.toString();
     }
 }
