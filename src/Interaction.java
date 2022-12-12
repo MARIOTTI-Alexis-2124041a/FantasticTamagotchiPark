@@ -19,6 +19,7 @@ public class Interaction {
         this.allTamagotchiByFammily = new ArrayList<ArrayList<Tamagotchi>>();
 
         //create and add all tamagotchi
+
     }
 
     public static void main(String[] args) {
@@ -33,11 +34,47 @@ public class Interaction {
         while (! userMessage.equals("exit")){
             userMessage = inputScanner.nextLine();
 
-            System.out.println(userMessage);
+            if (userMessage.length() > 4 && userMessage.substring(0,3).equals("see")){
+                String name = new String(userMessage.substring(4));
+                System.out.println(name);
 
-            if (interaction.actualTamagotchi != null){
-
+                for ( ArrayList<Tamagotchi> family : interaction.allTamagotchiByFammily) {
+                    for (Tamagotchi tamagotchi: family) {
+                        if (tamagotchi.getName().equals("name")){
+                            interaction.actualTamagotchi = tamagotchi;
+                        }
+                    }
+                }
             }
+            else if (userMessage.equals("seeAll")){
+                for ( ArrayList<Tamagotchi> family : interaction.allTamagotchiByFammily) {
+                    if (family.size()>0){
+                        System.out.println(family.get(0).getRace() +" :");
+                    }
+                    for (Tamagotchi tamagotchi: family) {
+                        System.out.println(tamagotchi.getName());
+                        //for see ASCII Art
+                        System.out.println(tamagotchi);
+                    }
+                }
+            }
+            else if (interaction.actualTamagotchi != null){
+                if (userMessage=="joke"){
+
+                }
+                else{
+                    System.out.println("Unknow command ! Please type Help to see all commads");
+                }
+            }
+            else {
+                if (userMessage == "feed" || userMessage == "joke" || userMessage == "pet" || userMessage == "sleep" || userMessage == "seeInformation" || userMessage == "sleep"){
+                    System.out.println("You need to see a specific Tamagotchi");
+                }
+                else{
+                    System.out.println("Unknow command ! Please type Help to see all commads");
+                }
+            }
+
             //implement randoms actions of the actual tamagotchi
         }
     }
