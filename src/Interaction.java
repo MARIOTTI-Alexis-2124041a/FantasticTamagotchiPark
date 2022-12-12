@@ -1,15 +1,17 @@
 package src;
 
+import src.tamagotchi.Tamagotchi;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Interaction {
 
-    //private ArrayList<ArrayList<Tamagotchi>> allTamagotchiByFammily;
+    private ArrayList<ArrayList<Tamagotchi>> allTamagotchiByFammily;
 
 
     public Interaction() {
-        //this.allTamagotchiByFammily = new ArrayList<ArrayList<Tamagotchi>>();
+        this.allTamagotchiByFammily = new ArrayList<ArrayList<Tamagotchi>>();
 
         //create and add all tamagotchi
     }
