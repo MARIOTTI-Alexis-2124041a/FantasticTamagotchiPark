@@ -14,16 +14,16 @@ public class DarkFairy extends Fairy {
     public String joke(int jokeNumber) {
         switch (jokeNumber) {
             case 1 :
-                getHapinessBar().decreaseBar(20);
+                getHapinessBar().decreaseBar(20); // Type of joke = lovely
                 break;
             case 2 :
-                getHapinessBar().increaseBar(50);
+                getHapinessBar().decreaseBar(50); // Type of joke = kind
                 break;
             case 3 :
-                getHapinessBar().increaseBar(20);
+                getHapinessBar().increaseBar(20); // Type of joke = bad
                 break;
             case 4 :
-                getHapinessBar().decreaseBar(50);
+                getHapinessBar().increaseBar(50); // Type of joke = nasty
                 break;
         }
         return displayHapinessBar();
