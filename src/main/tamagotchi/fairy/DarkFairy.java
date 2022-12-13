@@ -17,10 +17,10 @@ public class DarkFairy extends Fairy {
                 getHapinessBar().decreaseBar(20); // Type of joke = lovely
                 break;
             case 2 :
-                getHapinessBar().decreaseBar(50); // Type of joke = kind
+                getHapinessBar().decreaseBar(50); // Type of joke = medium
                 break;
             case 3 :
-                getHapinessBar().increaseBar(20); // Type of joke = bad
+                getHapinessBar().increaseBar(20); // Type of joke = not funny
                 break;
             case 4 :
                 getHapinessBar().increaseBar(50); // Type of joke = nasty

@@ -19,10 +19,11 @@ public class Interaction {
     public static HashMap<Integer,String> jokes = new HashMap<Integer,String>();
     static {
         //creating the joke
-        jokes.put(1,"I threw a boomerang a few year ago.\nAnd now i live in a constant fear");  //medium
-        jokes.put(2,"You don't need a parachute to go skydiving.\nYou need a parachute to skydiving twice."); //Dark
+        jokes.put(1,"Why do cows wear bells?\nBecause their horns don't work."); //soft
+        jokes.put(2,"I threw a boomerang a few year ago.\nAnd now i live in a constant fear");  //medium
         jokes.put(3,"A Roman legionnaire walks into a bar, holds up two finger ans say,\n\"Five beers, please.\""); //not funny
-        jokes.put(4,"Why do cows wear bells?\nBecause their horns don't work."); //soft
+        jokes.put(4,"You don't need a parachute to go skydiving.\nYou need a parachute to skydiving twice."); //Dark
+
     }
 
     public Interaction() {
