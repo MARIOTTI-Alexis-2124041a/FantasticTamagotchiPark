@@ -34,6 +34,7 @@ public class Interaction {
         while (! userMessage.equals("exit")){
             userMessage = inputScanner.nextLine();
 
+            //verifying if user type a global command
             if (userMessage.length() > 4 && userMessage.substring(0,3).equals("see")){
                 String name = new String(userMessage.substring(4));
                 System.out.println(name);
@@ -58,6 +59,7 @@ public class Interaction {
                     }
                 }
             }
+            //verify if user type a command for a specific Tamagotchi
             else if (interaction.actualTamagotchi != null){
                 if (userMessage=="joke"){
 
