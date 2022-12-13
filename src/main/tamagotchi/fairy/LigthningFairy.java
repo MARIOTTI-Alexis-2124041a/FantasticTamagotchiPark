@@ -29,17 +29,17 @@ public class LigthningFairy extends Fairy{
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("      x\n");
-        sb.append("     xx\n");
-        sb.append("    xxxxxx\n");
-        sb.append("       xx\n");
-        sb.append("       x  \n");
         return sb.toString();
     }
 
     @Override
     public String usePower() {
         StringBuilder sb = new StringBuilder();
+        sb.append("      x\n");
+        sb.append("     xx\n");
+        sb.append("    xxxxxx\n");
+        sb.append("       xx\n");
+        sb.append("       x  \n");
         return sb.toString();
     }
 }
