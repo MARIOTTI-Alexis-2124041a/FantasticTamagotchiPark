@@ -17,13 +17,13 @@ public class DarkFairy extends Fairy {
                 getHapinessBar().decreaseBar(20);
                 break;
             case 2 :
-                getHapinessBar().decreaseBar(50);
+                getHapinessBar().increaseBar(50);
                 break;
             case 3 :
                 getHapinessBar().increaseBar(20);
                 break;
             case 4 :
-                getHapinessBar().increaseBar(50);
+                getHapinessBar().decreaseBar(50);
                 break;
         }
         return displayHapinessBar();
