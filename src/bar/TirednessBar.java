@@ -1,7 +1,7 @@
 package bar;
 
-public class TirenessBar extends Bar{
-    public TirenessBar() {
+public class TirednessBar extends Bar{
+    public TirednessBar() {
         super(25, 25);
     }
 
@@ -14,7 +14,7 @@ public class TirenessBar extends Bar{
     public String displayBar() {
         int nbChar = super.getMax() / 5;
         int nbFullChar = super.getCurrentValue() / 5;
-        StringBuilder barStr = new StringBuilder("Tireness: ");
+        StringBuilder barStr = new StringBuilder("Tiredness: ");
         for (int i = 1; i <= nbChar; ++i) {
             if (i <= nbFullChar) {
                 barStr.append('#');

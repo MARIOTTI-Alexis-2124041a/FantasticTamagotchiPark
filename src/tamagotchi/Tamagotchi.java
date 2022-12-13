@@ -2,7 +2,7 @@ package tamagotchi;
 import bar.Bar;
 import bar.HappinessBar;
 import bar.HungerBar;
-import bar.TirenessBar;
+import bar.TirednessBar;
 import tamagotchi.type.Type;
 
 import java.util.Random;
@@ -12,7 +12,7 @@ public abstract class Tamagotchi {
 
     //Déclaration des Bar
     private Bar hungerBar = new HungerBar();
-    private Bar tirenessBar = new TirenessBar();
+    private Bar tirenessBar = new TirednessBar();
     private Bar hapinessBar = new HappinessBar();
     private Race race;
     private Type type;
