@@ -18,7 +18,7 @@ public class LigthningFairy extends Fairy{
     }
 
     @Override
-    public String userPower() {
+    public String usePower() {
         StringBuilder sb = new StringBuilder();
         return sb.toString();
     }

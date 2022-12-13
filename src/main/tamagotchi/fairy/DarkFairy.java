@@ -35,7 +35,7 @@ public class DarkFairy extends Fairy {
     }
 
     @Override
-    public String userPower() {
+    public String usePower() {
         StringBuilder sb = new StringBuilder();
         sb.append("=== x x x x xxxxx\n");
         sb.append("       x\n");

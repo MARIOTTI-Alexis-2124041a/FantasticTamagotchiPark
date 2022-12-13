@@ -32,30 +32,39 @@ public class Interaction {
         System.out.println("----------------------------------------\n--Welcome to FANTASTIC TAMAGOTCHI PARK--\n----------------------------------------\n\ntype \"help\" to know what you can do");
 
         while (! userMessage.equals("exit")){
-            userMessage = inputScanner.nextLine();
+            userMessage = inputScanner.nextLine().trim();
 
+            System.out.println(userMessage);
             //verifying if user type a global command
-            if (userMessage.length() > 4 && userMessage.substring(0,3).equals("see")){
-                String name = new String(userMessage.substring(4));
-                System.out.println(name);
-
-                for ( ArrayList<Tamagotchi> family : interaction.allTamagotchiByFammily) {
-                    for (Tamagotchi tamagotchi: family) {
-                        if (tamagotchi.getName().equals("name")){
-                            interaction.actualTamagotchi = tamagotchi;
+            if (userMessage.length()>3 && userMessage.substring(0,3).equals("see")){
+                //for seeAll command
+                if (userMessage.equals("seeAll")){
+                    for ( ArrayList<Tamagotchi> family : interaction.allTamagotchiByFammily) {
+                        if (family.size()>0){
+                            System.out.println(family.get(0).getRace() +" :");
+                        }
+                        for (Tamagotchi tamagotchi: family) {
+                            System.out.println(tamagotchi.getName());
+                            //for see ASCII Art
+                            System.out.println(tamagotchi);
                         }
                     }
                 }
-            }
-            else if (userMessage.equals("seeAll")){
-                for ( ArrayList<Tamagotchi> family : interaction.allTamagotchiByFammily) {
-                    if (family.size()>0){
-                        System.out.println(family.get(0).getRace() +" :");
-                    }
-                    for (Tamagotchi tamagotchi: family) {
-                        System.out.println(tamagotchi.getName());
-                        //for see ASCII Art
-                        System.out.println(tamagotchi);
+                //If there is no argument
+                else if (userMessage.equals("see")){
+                    System.out.println("Please specify a Tamagotchi to see !");
+                }
+                //basic see command treatment
+                else {
+                    String name = new String(userMessage.substring(4));
+                    System.out.println(name);
+
+                    for (ArrayList<Tamagotchi> family : interaction.allTamagotchiByFammily) {
+                        for (Tamagotchi tamagotchi : family) {
+                            if (tamagotchi.getName().equals("name")) {
+                                interaction.actualTamagotchi = tamagotchi;
+                            }
+                        }
                     }
                 }
             }
