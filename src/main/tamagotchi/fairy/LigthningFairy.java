@@ -29,17 +29,35 @@ public class LigthningFairy extends Fairy{
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        sb.append("  *   _     _  *   * \n");
+        sb.append("*    / \\   / \\   *\n");
+        sb.append("   * \\  ( )  / \n");
+        sb.append("       (| |)\n");
+        sb.append("      /_|_|_\\\n");
         return sb.toString();
     }
 
     @Override
     public String usePower() {
         StringBuilder sb = new StringBuilder();
+        sb.append("  *   _     _  *   *    \n");
+        sb.append("*    / \\   / \\   *     x  \n");
+        sb.append("   * \\  ( )  / _____  xxx\n");
+        sb.append("       (| |)   =====    x\n");
+        sb.append("      /_|_|_\\          \n");
+
+        /*
         sb.append("      x\n");
         sb.append("     xx\n");
         sb.append("    xxxxxx\n");
         sb.append("       xx\n");
         sb.append("       x  \n");
+        */
         return sb.toString();
+    }
+
+    public static void main(String args[]) {
+        LigthningFairy ligthningFairy = new LigthningFairy("jj");
+        System.out.println(ligthningFairy.usePower());
     }
 }

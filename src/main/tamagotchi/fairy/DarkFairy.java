@@ -31,15 +31,28 @@ public class DarkFairy extends Fairy {
 
     @Override
     public String toString() {
-        return null;
+        StringBuilder sb = new StringBuilder();
+        sb.append("  ~   _     _  ~   ~ \n");
+        sb.append("~    / \\   / \\   ~\n");
+        sb.append("   ~ \\  ( )  / \n");
+        sb.append("       (| |)\n");
+        sb.append("      /_|_|_\\\n");
+        return sb.toString();
     }
 
     @Override
     public String usePower() {
         StringBuilder sb = new StringBuilder();
-        sb.append("=== x x x x xxxxx\n");
-        sb.append("       x\n");
-        sb.append("          x\n");
+        sb.append("  ~   _     _  ~   ~ \n");
+        sb.append("~    / \\   / \\   ~\n");
+        sb.append("   ~ \\  ( )  / _____ /|\\ /|\\ \n");
+        sb.append("       (| |)   ===== \\|/ \\|/ \n");
+        sb.append("      /_|_|_\\\n");
         return sb.toString();
+    }
+
+    public static void main(String args[]) {
+        DarkFairy darkFairy = new DarkFairy("jj");
+        System.out.println(darkFairy.toString());
     }
 }

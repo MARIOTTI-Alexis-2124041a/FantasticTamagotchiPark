@@ -24,6 +24,7 @@ public abstract class Fairy extends Tamagotchi {
         if (isFlying) {
             return "The fairy is already flying";
         }
+        isFlying = true;
         return "The fairy is flying";
     }
 
