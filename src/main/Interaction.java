@@ -142,15 +142,27 @@ public class Interaction {
                     //parse userChoice
                     try{
                         //display the tamagotchi joke reaction
-                        interaction.actualTamagotchi.feed(Integer.parseInt(userChoice));
-                        System.out.println(interaction.actualTamagotchi.getName() + " enjoy th meal...");
+                        int mealInt = Integer.parseInt(userChoice);
+                        switch (mealInt){
+                            case 1:
+                                interaction.actualTamagotchi.feed(50);
+                                break;
+                            case 2:
+                                interaction.actualTamagotchi.feed(15);
+                                break;
+                            case 3:
+                                interaction.actualTamagotchi.feed(30);
+                                break;
+                        }
+
+                        System.out.println(interaction.actualTamagotchi.getName() + " enjoy th meal...\n" + interaction.actualTamagotchi.getHungerBar().displayBar());
                     }
                     catch(NumberFormatException nfe){
                         System.out.println("Invalid food number! Please select a correct number!");
                     }
                 }
                 else{
-                    System.out.println("Unknow command ! Please type Help to see all commads");
+                    System.out.println("Unknown command ! Please type Help to see all commands");
                 }
             }
             else {
@@ -158,7 +170,7 @@ public class Interaction {
                     System.out.println("You need to see a specific Tamagotchi with \"see\" command");
                 }
                 else{
-                    System.out.println("Unknow command ! Please type Help to see all commads");
+                    System.out.println("Unknown command ! Please type Help to see all commands");
                 }
             }
 
