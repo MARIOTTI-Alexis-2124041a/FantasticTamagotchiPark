@@ -1,16 +1,16 @@
 package tamagotchi.fairy;
 
 import tamagotchi.Race;
-import tamagotchi.type.Ligthning;
+import tamagotchi.type.Lightning;
 import tamagotchi.type.Type;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-public class LigthningFairy extends Fairy implements Ligthning {
+public class LigthningFairy extends Fairy implements Lightning {
 
     public LigthningFairy(String name) {
-        super(name, Race.FAIRY, Type.LIGTHNING);
+        super(name, Race.FAIRY, Type.LIGHTNING);
     }
 
     /**

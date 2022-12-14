@@ -2,7 +2,7 @@ package tamagotchi.type;
 
 public enum Type {
     DARK("Dark"),
-    LIGTHNING("ligthning");
+    LIGHTNING("lightning");
 
     public final String label;
     Type(String label) {

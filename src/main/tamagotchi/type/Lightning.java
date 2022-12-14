@@ -1,6 +1,6 @@
 package tamagotchi.type;
 
-public interface Ligthning {
+public interface Lightning {
 
     /**
      * Method implemented in the ligthning class in order to create tamagotchi kissing

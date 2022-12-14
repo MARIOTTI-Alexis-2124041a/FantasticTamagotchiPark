@@ -1,8 +1,6 @@
 
 
 
-import bar.Bar;
-import bar.HungerBar;
 import tamagotchi.Tamagotchi;
 import tamagotchi.elf.DarkElf;
 import tamagotchi.elf.Elf;
@@ -11,6 +9,7 @@ import tamagotchi.fairy.DarkFairy;
 import tamagotchi.fairy.Fairy;
 import tamagotchi.fairy.LigthningFairy;
 import tamagotchi.type.Dark;
+import tamagotchi.type.Lightning;
 import tamagotchi.type.Type;
 
 import java.util.*;
@@ -64,7 +63,7 @@ public class Interaction {
          return sortTamagotchi;
      }
 
-    private ArrayList<Tamagotchi> sortByTireness(){
+    private ArrayList<Tamagotchi> sortByTiredness(){
         //recuperation of all tamagotchi in one List
         ArrayList<Tamagotchi> sortTamagotchi = new ArrayList<Tamagotchi>();
 
@@ -219,26 +218,26 @@ public class Interaction {
             //for seeAll command
             if (userMessageSplit[0].equals("seeAll")) {
                 if (userMessageSplit.length == 2) {
-                    if (userMessageSplit[1].equals("tireness")){
-                        for (Tamagotchi tamagotchi : interaction.sortByTireness()) {
+                    if (userMessageSplit[1].equals("tiredness")){
+                        for (Tamagotchi tamagotchi : interaction.sortByTiredness()) {
                             System.out.println("\tName : " + tamagotchi.getName());
                             System.out.println("\tRace : " + tamagotchi.getRace());
                             System.out.println("\tType : " + tamagotchi.getType());
-                            System.out.println(tamagotchi.getTirenessBar());
+                            System.out.println(tamagotchi.getTirenessBar().displayBar());
                         }
                     } else if (userMessageSplit[1].equals("hunger")){
                         for (Tamagotchi tamagotchi : interaction.sortByHunger()) {
                             System.out.println("\tName : " + tamagotchi.getName());
                             System.out.println("\tRace : " + tamagotchi.getRace());
                             System.out.println("\tType : " + tamagotchi.getType());
-                            System.out.println(tamagotchi.getHungerBar());
+                            System.out.println(tamagotchi.getHungerBar().displayBar());
                         }
                     } else if (userMessageSplit[1].equals("happiness")){
                         for (Tamagotchi tamagotchi : interaction.sortByHappiness()) {
                             System.out.println("\tName : " + tamagotchi.getName());
                             System.out.println("\tRace : " + tamagotchi.getRace());
                             System.out.println("\tType : " + tamagotchi.getType());
-                            System.out.println(tamagotchi.getHappinessBar());
+                            System.out.println(tamagotchi.getHappinessBar().displayBar());
                         }
                     }
                     //for invalid 1st argument
@@ -413,12 +412,28 @@ public class Interaction {
                         System.out.println(interaction.actualTamagotchi.getName() + " is not dark, chose a tamagotchi with dark type to use \"complain\" command");
                     }
                 }
+                else if (userMessageSplit[0].equals("kiss")){
+                    if (interaction.actualTamagotchi.getType() == Type.LIGHTNING){
+                        System.out.println(((Lightning) interaction.actualTamagotchi).kiss());
+                    }
+                    else {
+                        System.out.println(interaction.actualTamagotchi.getName() + " is not lightning, chose a tamagotchi with lightning type to use \"kiss\" command");
+                    }
+                }
+                else if (userMessageSplit[0].equals("compliment")){
+                    if (interaction.actualTamagotchi.getType() == Type.LIGHTNING){
+                        System.out.println(((Lightning) interaction.actualTamagotchi).compliment());
+                    }
+                    else {
+                        System.out.println(interaction.actualTamagotchi.getName() + " is not lightning, chose a tamagotchi with lightning type to use \"compliment\" command");
+                    }
+                }
                 else{
                     System.out.println("Unknown command ! Please type \"Help\" to see all commands");
                 }
             }
             else {
-                if (userMessageSplit[0].equals("feed") || userMessageSplit[0].equals("joke") || userMessageSplit[0].equals("pet") || userMessageSplit[0].equals("sleep") || userMessageSplit[0].equals("information") || userMessageSplit[0].equals("sleep") || userMessageSplit[0].equals("fly") || userMessageSplit[0].equals("retort") || userMessageSplit[0].equals("whoHasBiggest") || userMessageSplit[0].equals("music")|| userMessageSplit[0].equals("power") || userMessageSplit[0].equals("cry") || userMessageSplit[0].equals("complain")){
+                if (userMessageSplit[0].equals("feed") || userMessageSplit[0].equals("joke") || userMessageSplit[0].equals("pet") || userMessageSplit[0].equals("sleep") || userMessageSplit[0].equals("information") || userMessageSplit[0].equals("sleep") || userMessageSplit[0].equals("fly") || userMessageSplit[0].equals("retort") || userMessageSplit[0].equals("whoHasBiggest") || userMessageSplit[0].equals("music")|| userMessageSplit[0].equals("power") || userMessageSplit[0].equals("cry") || userMessageSplit[0].equals("complain") || userMessageSplit[0].equals("kiss") || userMessageSplit[0].equals("compliment")){
                     System.out.println("You need to see a specific Tamagotchi with \"see\" command");
                 }
                 else{
