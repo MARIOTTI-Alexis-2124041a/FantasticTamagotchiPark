@@ -1,6 +1,7 @@
 
 
 
+import bar.Bar;
 import bar.HungerBar;
 import tamagotchi.Tamagotchi;
 import tamagotchi.elf.DarkElf;
@@ -28,6 +29,105 @@ public class Interaction {
         jokes.put(3,"A Roman legionnaire walks into a bar, holds up two finger ans say,\n\"Five beers, please.\""); //not funny
         jokes.put(4,"You don't need a parachute to go skydiving.\nYou need a parachute to skydiving twice."); //Dark
 
+    }
+
+     private ArrayList<Tamagotchi> sortByHunger(){
+        //recuperation of all tamagotchi in one List
+         ArrayList<Tamagotchi> sortTamagotchi = new ArrayList<Tamagotchi>();
+
+         for (ArrayList<Tamagotchi> family : this.allTamagotchiByFammily) {
+             for (Tamagotchi actualTamagotchi : family) {
+                 sortTamagotchi.add(actualTamagotchi);
+             }
+         }
+
+         //sort using selection sort
+
+         int pos;
+         Tamagotchi temp;
+         for (int i = 0; i < sortTamagotchi.size(); i++)
+         {
+             pos = i;
+             for (int j = i+1; j < sortTamagotchi.size(); j++)
+             {
+                 if (sortTamagotchi.get(j).getHungerBar().getCurrentValue() < sortTamagotchi.get(pos).getHungerBar().getCurrentValue())
+                 {
+                     pos = j;
+                 }
+             }
+
+             temp = sortTamagotchi.get(pos);
+             sortTamagotchi.set(pos, sortTamagotchi.get(i));
+             sortTamagotchi.set(i, temp);
+         }
+
+         return sortTamagotchi;
+     }
+
+    private ArrayList<Tamagotchi> sortByTireness(){
+        //recuperation of all tamagotchi in one List
+        ArrayList<Tamagotchi> sortTamagotchi = new ArrayList<Tamagotchi>();
+
+        for (ArrayList<Tamagotchi> family : this.allTamagotchiByFammily) {
+            for (Tamagotchi actualTamagotchi : family) {
+                sortTamagotchi.add(actualTamagotchi);
+            }
+        }
+
+        //sort using selection sort
+
+        int pos;
+        Tamagotchi temp;
+        for (int i = 0; i < sortTamagotchi.size(); i++)
+        {
+            pos = i;
+            for (int j = i+1; j < sortTamagotchi.size(); j++)
+            {
+                if (sortTamagotchi.get(j).getTirenessBar().getCurrentValue() < sortTamagotchi.get(pos).getTirenessBar().getCurrentValue())
+                {
+                    pos = j;
+                }
+            }
+
+            temp = sortTamagotchi.get(pos);
+            sortTamagotchi.set(pos, sortTamagotchi.get(i));
+            sortTamagotchi.set(i, temp);
+        }
+
+        return sortTamagotchi;
+    }
+
+    private ArrayList<Tamagotchi> sortByHappiness(){
+        //recuperation of all tamagotchi in one List
+        ArrayList<Tamagotchi> sortTamagotchi = new ArrayList<Tamagotchi>();
+
+        for (ArrayList<Tamagotchi> family : this.allTamagotchiByFammily) {
+            for (Tamagotchi actualTamagotchi : family) {
+                sortTamagotchi.add(actualTamagotchi);
+            }
+        }
+
+        //sort using selection sort
+
+        int pos;
+        Tamagotchi temp;
+        for (int i = 0; i < sortTamagotchi.size(); i++)
+        {
+            pos = i;
+            for (int j = i+1; j < sortTamagotchi.size(); j++)
+            {
+                if (sortTamagotchi.get(j).getHapinessBar().getCurrentValue() < sortTamagotchi.get(pos).getHapinessBar().getCurrentValue())
+                {
+                    pos = j;
+                }
+            }
+
+            temp = sortTamagotchi.get(pos);
+            sortTamagotchi.set(pos, sortTamagotchi.get(i));
+            sortTamagotchi.set(i, temp);
+        }
+
+        return sortTamagotchi;
     }
 
     public Interaction() {
@@ -111,35 +211,71 @@ public class Interaction {
 
         while (! userMessage.equals("exit")){
             System.out.print("~FTP-$");
-            userMessage = inputScanner.nextLine().trim(); //
+            userMessage = inputScanner.nextLine().trim();
+
+            //Split the message by words
+            String[] userMessageSplit = userMessage.split("\\W+");
+
             //for seeAll command
-            if (userMessage.equals("seeAll")){
-                try {
-                    System.out.println("Actual : " + interaction.actualTamagotchi.getName() + "\n");
-                } catch (Exception exception){
-                    System.out.println("Actual : no one\n");
+            if (userMessageSplit[0].equals("seeAll")) {
+                if (userMessageSplit.length == 2) {
+                    if (userMessageSplit[1].equals("tireness")){
+                        for (Tamagotchi tamagotchi : interaction.sortByTireness()) {
+                            System.out.println("\tName : " + tamagotchi.getName());
+                            System.out.println("\tRace : " + tamagotchi.getRace());
+                            System.out.println("\tType : " + tamagotchi.getType());
+                            System.out.println(tamagotchi.getTirenessBar());
+                        }
+                    } else if (userMessageSplit[1].equals("hunger")){
+                        for (Tamagotchi tamagotchi : interaction.sortByHunger()) {
+                            System.out.println("\tName : " + tamagotchi.getName());
+                            System.out.println("\tRace : " + tamagotchi.getRace());
+                            System.out.println("\tType : " + tamagotchi.getType());
+                            System.out.println(tamagotchi.getHungerBar());
+                        }
+                    } else if (userMessageSplit[1].equals("happiness")){
+                        for (Tamagotchi tamagotchi : interaction.sortByHappiness()) {
+                            System.out.println("\tName : " + tamagotchi.getName());
+                            System.out.println("\tRace : " + tamagotchi.getRace());
+                            System.out.println("\tType : " + tamagotchi.getType());
+                            System.out.println(tamagotchi.getHapinessBar());
+                        }
+                    }
+                    //for invalid 1st argument
+                    else {
+                        System.out.println("Invalid argument ! " + userMessageSplit[1] + " is not a valid argument for seeAll command. Please type \"help\"");
+                    }
+                } else if (userMessageSplit.length == 1) {
+                    try {
+                        System.out.println("Actual : " + interaction.actualTamagotchi.getName() + "\n");
+                    } catch (Exception exception) {
+                        System.out.println("Actual : no one\n");
+                    }
+                    for (ArrayList<Tamagotchi> family : interaction.allTamagotchiByFammily) {
+                        if (family.size() > 0) {
+                            System.out.println(family.get(0).getRace() + " :");
+                        }
+                        for (Tamagotchi tamagotchi : family) {
+                            System.out.println("\tName: " + tamagotchi.getName() + "\n\tType: " + tamagotchi.getType());
+                            //for see ASCII Art
+                            System.out.println(tamagotchi);
+                        }
+                    }
                 }
-                for ( ArrayList<Tamagotchi> family : interaction.allTamagotchiByFammily) {
-                    if (family.size()>0){
-                        System.out.println(family.get(0).getRace() +" :");
-                    }
-                    for (Tamagotchi tamagotchi: family) {
-                        System.out.println("\tName: " + tamagotchi.getName() + "\n\tType: " + tamagotchi.getType());
-                        //for see ASCII Art
-                        System.out.println(tamagotchi);
-                    }
+                else {
+                    System.out.println("Too much argument ! Please type \"help\"");
                 }
             }
             //verifying if user type a global command
-            else if (userMessage.length()>2 && userMessage.substring(0,3).equals("see")){
+            else if (userMessageSplit[0].equals("see")){
 
                 //If there is no argument
-                if (userMessage.equals("see")){
+                if (userMessageSplit.length < 2){
                     System.out.println("Please specify a Tamagotchi to see !");
                 }
-                else if (userMessage.substring(0,4).equals("see ")) {
+                else if (userMessageSplit.length == 2) {
                     //basic see command treatment
-                    String name = new String(userMessage.substring(4));
+                    String name = new String(userMessageSplit[1]);
                     boolean isTamagotchiNotExist = true;
 
                     for (ArrayList<Tamagotchi> family : interaction.allTamagotchiByFammily) {
@@ -153,20 +289,20 @@ public class Interaction {
                         }
                     }
                     if (isTamagotchiNotExist) {
-                        System.out.println("This tamagotchi does not exist ! Type seeAll to see all tamagotchi");
+                        System.out.println("This tamagotchi does not exist ! Type \"seeAll\" to see all tamagotchi");
                     }
                 }
                 //for unknown command with a see prefix
                 else{
-                    System.out.println("Unknow command ! Please type Help to see all commads");
+                    System.out.println("Too much argument ! Please type Help");
                 }
             }
-            else if (userMessage.equals("exit")){
+            else if (userMessageSplit[0].equals("exit")){
                 System.out.println("See you soon");
             }
             //verify if user type a command for a specific Tamagotchi
             else if (interaction.actualTamagotchi != null){
-                if (userMessage.equals("joke")){
+                if (userMessageSplit[0].equals("joke")){
 
                     System.out.println("Select a joke :");
                     //iterate the jokes map to display it
@@ -184,11 +320,11 @@ public class Interaction {
                         System.out.println("Invalid joke number! Please select a correct number!");
                     }
                 }
-                else if(userMessage.equals("information")){
+                else if(userMessageSplit[0].equals("information")){
                     //display information
                     System.out.println(interaction.actualTamagotchi.displayInformation());
                 }
-                else if (userMessage.equals("feed")){
+                else if (userMessageSplit[0].equals("feed")){
                     System.out.println("You what to feed " + interaction.actualTamagotchi.getName() + " with witch food ?\n\"1\" for a steak\n\"2\" for a salad\n\"3\" for a Tiramisu");
 
                     String userChoice = inputScanner.nextLine().trim(); //user input
@@ -215,13 +351,13 @@ public class Interaction {
                         System.out.println("Invalid food number! Please select a correct number!");
                     }
                 }
-                else if (userMessage.equals("pet")){
+                else if (userMessageSplit[0].equals("pet")){
                     System.out.println(interaction.actualTamagotchi.pet());
                 }
-                else if (userMessage.equals("sleep")){
+                else if (userMessageSplit[0].equals("sleep")){
                     System.out.println(interaction.actualTamagotchi.sleep());
                 }
-                else if (userMessage.equals("fly")){
+                else if (userMessageSplit[0].equals("fly")){
                     if (interaction.actualTamagotchi instanceof Fairy){
                         System.out.println(((Fairy) interaction.actualTamagotchi).fly());
                     }
@@ -229,7 +365,7 @@ public class Interaction {
                         System.out.println(interaction.actualTamagotchi.getName() + " is not an fairy, chose an fairy to use \"fly\" command");
                     }
                 }
-                else if (userMessage.equals("retort")){
+                else if (userMessageSplit[0].equals("retort")){
                     if (interaction.actualTamagotchi instanceof Elf){
                         System.out.println(((Elf) interaction.actualTamagotchi).sillyRetort());
                     }
@@ -237,7 +373,7 @@ public class Interaction {
                         System.out.println(interaction.actualTamagotchi.getName() + " is not an elf, chose an elf to use \"retort\" command");
                     }
                 }
-                else if (userMessage.equals("whoHasBiggest")){
+                else if (userMessageSplit[0].equals("whoHasBiggest")){
                     if (interaction.actualTamagotchi instanceof Elf){
                         System.out.println(((Elf) interaction.actualTamagotchi).sayHeHasBiggest());
                     }
@@ -245,7 +381,7 @@ public class Interaction {
                         System.out.println(interaction.actualTamagotchi.getName() + " is not an elf, chose an elf to use \"whoHasBiggest\" command");
                     }
                 }
-                else if (userMessage.equals("music")){
+                else if (userMessageSplit[0].equals("music")){
                     if (interaction.actualTamagotchi instanceof Elf){
                         System.out.println(((Elf) interaction.actualTamagotchi).playAnInstrument());
                     }
@@ -253,7 +389,7 @@ public class Interaction {
                         System.out.println(interaction.actualTamagotchi.getName() + " is not an elf, chose an elf to use \"music\" command");
                     }
                 }
-                else if (userMessage.equals("power")){
+                else if (userMessageSplit[0].equals("power")){
                     if (interaction.actualTamagotchi instanceof Fairy){
                         System.out.println(((Fairy) interaction.actualTamagotchi).usePower());
                     }
@@ -261,7 +397,7 @@ public class Interaction {
                         System.out.println(interaction.actualTamagotchi.getName() + " is not an fairy, chose an fairy to use \"power\" command");
                     }
                 }
-                else if (userMessage.equals("cry")){
+                else if (userMessageSplit[0].equals("cry")){
                     if (interaction.actualTamagotchi.getType() == Type.DARK){
                         System.out.println(((Dark) interaction.actualTamagotchi).cry());
                     }
@@ -269,7 +405,7 @@ public class Interaction {
                         System.out.println(interaction.actualTamagotchi.getName() + " is not dark, chose a tamagotchi with dark type to use \"cry\" command");
                     }
                 }
-                else if (userMessage.equals("complain")){
+                else if (userMessageSplit[0].equals("complain")){
                     if (interaction.actualTamagotchi.getType() == Type.DARK){
                         System.out.println(((Dark) interaction.actualTamagotchi).complain());
                     }
@@ -282,7 +418,7 @@ public class Interaction {
                 }
             }
             else {
-                if (userMessage.equals("feed") || userMessage.equals("joke") || userMessage.equals("pet") || userMessage.equals("sleep") || userMessage.equals("information") || userMessage.equals("sleep") || userMessage.equals("fly") || userMessage.equals("retort") || userMessage.equals("whoHasBiggest") || userMessage.equals("music")|| userMessage.equals("power") || userMessage.equals("cry") || userMessage.equals("complain")){
+                if (userMessageSplit[0].equals("feed") || userMessageSplit[0].equals("joke") || userMessageSplit[0].equals("pet") || userMessageSplit[0].equals("sleep") || userMessageSplit[0].equals("information") || userMessageSplit[0].equals("sleep") || userMessageSplit[0].equals("fly") || userMessageSplit[0].equals("retort") || userMessageSplit[0].equals("whoHasBiggest") || userMessageSplit[0].equals("music")|| userMessageSplit[0].equals("power") || userMessageSplit[0].equals("cry") || userMessageSplit[0].equals("complain")){
                     System.out.println("You need to see a specific Tamagotchi with \"see\" command");
                 }
                 else{
