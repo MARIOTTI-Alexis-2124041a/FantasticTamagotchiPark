@@ -158,6 +158,9 @@ public class Interaction {
                         System.out.println("Invalid food number! Please select a correct number!");
                     }
                 }
+                else if (userMessage.equals("pet")){
+                    System.out.println(interaction.actualTamagotchi.pet());
+                }
                 else{
                     System.out.println("Unknown command ! Please type Help to see all commands");
                 }

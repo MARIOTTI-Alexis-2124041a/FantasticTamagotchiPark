@@ -64,22 +64,27 @@ public abstract class Tamagotchi {
     public void feed (int quantity) {
         hungerBar.increaseBar(quantity);
     }
-    public void sleep() {
+    public String sleep() {
         //Number of seconds. Max = 12h
         int time = new Random().nextInt(43200);
         //3h
         if (time < 10800) {
             tirenessBar.increaseBar(5);
+            return this.name + "slept for less than 3 hours\n" + this.tirenessBar.displayBar();
         }
         //6h
         else if (time < 21600){
             tirenessBar.increaseBar(10);
+            return this.name + "slept for less than 6 hours\n" + this.tirenessBar.displayBar();
         }
+        //9h
         else if (time < 32400){
             tirenessBar.increaseBar(15);
+            return this.name + "slept for less than 9 hours\n" + this.tirenessBar.displayBar();
         }
         else {
             tirenessBar.increaseBar(20);
+            return this.name + "slept for almost 12 hours\n" + this.tirenessBar.displayBar();
         }
     }
     public String pet() {
@@ -88,17 +93,17 @@ public abstract class Tamagotchi {
         //10 mins
         if (time < 600) {
             hapinessBar.increaseBar(12);
-            return "you have pet " + this.name + " for 10 mins\n" + this.hungerBar.displayBar();
+            return "you have pet " + this.name + " for less than 10 mins\n" + this.hungerBar.displayBar();
         }
         //20 mins
         else if (time < 1200){
             hapinessBar.increaseBar(24);
-            return "you have pet " + this.name + " for 20 mins\n" + this.hungerBar.displayBar();
+            return "you have pet " + this.name + " for less than 20 mins\n" + this.hungerBar.displayBar();
         }
         //45 mins
         else if (time < 2700){
             hapinessBar.increaseBar(36);
-            return "you have pet " + this.name + " for 45 mins\n" + this.hungerBar.displayBar();
+            return "you have pet " + this.name + " for less than 45 mins\n" + this.hungerBar.displayBar();
         }
         //more than 45 mins
         else {
