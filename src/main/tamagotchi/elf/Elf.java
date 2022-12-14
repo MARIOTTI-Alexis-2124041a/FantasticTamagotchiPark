@@ -9,7 +9,14 @@ import java.util.List;
 import java.util.Random;
 
 public abstract class Elf extends Tamagotchi {
-    private int earSize; //The size of the Elf's ears, between 10 and 20 cm
+    /**
+     * The size of the Elf's ears, between 10 and 20 cm
+     */
+    private final int earSize;
+
+    /**
+     * List containing the retort used in the sillyRetort() function
+     */
     private final List<String> retortList;
 
     public Elf(String name, Race race, Type type) {
@@ -20,14 +27,21 @@ public abstract class Elf extends Tamagotchi {
         this.earSize = new Random().nextInt(5,10);
     }
 
+    /**
+     * Gives a silly retort chosen randomly in the retortList
+     * @return String : The silly retort
+     */
     public String sillyRetort() {
         int randomRetortNum = (int) (Math.random() * retortList.size());
         return retortList.get(randomRetortNum);
     }
 
+    /**
+     * Gives a string to indicate the great size of the Elf's ears
+     * @return String : Containing a sentence and the size of the ears
+     */
     public String sayHeHasBiggest() {
         return ("I possess the biggest ears in the land. They are no less then " + earSize + " cm long.");
     }
-
     public abstract String playAnInstrument();
 }

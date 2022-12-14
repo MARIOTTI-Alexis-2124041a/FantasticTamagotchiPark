@@ -5,7 +5,6 @@ import tamagotchi.type.Dark;
 import tamagotchi.type.Type;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class DarkElf extends Elf implements Dark {
@@ -15,25 +14,34 @@ public class DarkElf extends Elf implements Dark {
         super(name, Race.ELF, Type.DARK);
     }
 
+    /**
+     * Adapt the value of the happiness bar according to the chosen joke
+     * @param jokeNumber The number that identifies the joke chosen by the user
+     * @return String : The happiness bar, with its new value
+     */
     @Override
     public String joke(int jokeNumber) {
         switch (jokeNumber) {
             case 1 :
-                getHapinessBar().decreaseBar(20); // Type of joke = lovely
+                getHappinessBar().decreaseBar(20); // Type of joke = lovely
                 break;
             case 2 :
-                getHapinessBar().decreaseBar(30); // Type of joke = medium
+                getHappinessBar().decreaseBar(30); // Type of joke = medium
                 break;
             case 3 :
-                getHapinessBar().increaseBar(20); // Type of joke = not funny
+                getHappinessBar().increaseBar(20); // Type of joke = not funny
                 break;
             case 4 :
-                getHapinessBar().increaseBar(30); // Type of joke = nasty
+                getHappinessBar().increaseBar(30); // Type of joke = nasty
                 break;
         }
-        return displayHapinessBar();
+        return displayHappinessBar();
     }
 
+    /**
+     * Gives a string representing the instrument played by the elf (a guitar for the DarkElf)
+     * @return String : the representation
+     */
     @Override
     public String playAnInstrument() {
         StringBuilder sb = new StringBuilder();
@@ -53,6 +61,10 @@ public class DarkElf extends Elf implements Dark {
         return sb.toString();
     }
 
+    /**
+     * Gives a string representing the elf crying
+     * @return String
+     */
     @Override
     public String cry() {
         StringBuilder sb = new StringBuilder();
@@ -64,9 +76,13 @@ public class DarkElf extends Elf implements Dark {
         return sb.toString();
     }
 
+    /**
+     * Pick a random complain in a list and return it
+     * @return String : the complain picked
+     */
     @Override
     public String complain() {
-        List<String> listComplain = new ArrayList<>();
+        ArrayList<String> listComplain = new ArrayList<>();
         listComplain.add("I'm tired of living with ligthning elfs... ");
         listComplain.add("I have been hungry for too long !");
         listComplain.add("I am boring");
