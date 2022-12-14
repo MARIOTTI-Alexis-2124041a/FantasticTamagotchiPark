@@ -116,7 +116,7 @@ public class Interaction {
             pos = i;
             for (int j = i+1; j < sortTamagotchi.size(); j++)
             {
-                if (sortTamagotchi.get(j).getHapinessBar().getCurrentValue() < sortTamagotchi.get(pos).getHapinessBar().getCurrentValue())
+                if (sortTamagotchi.get(j).getHappinessBar().getCurrentValue() < sortTamagotchi.get(pos).getHappinessBar().getCurrentValue())
                 {
                     pos = j;
                 }
@@ -190,7 +190,7 @@ public class Interaction {
                     for (ArrayList<Tamagotchi> family : interaction.allTamagotchiByFammily) {
                         for (Tamagotchi actualTamagotchi : family) {
                             actualTamagotchi.getHungerBar().decreaseBar((int) (actualTamagotchi.getHungerBar().getMax()*0.1));
-                            actualTamagotchi.getHapinessBar().decreaseBar((int) (actualTamagotchi.getHapinessBar().getMax()*0.07));
+                            actualTamagotchi.getHappinessBar().decreaseBar((int) (actualTamagotchi.getHappinessBar().getMax()*0.07));
                             //For fairy flying
                             if (actualTamagotchi instanceof Fairy && ((Fairy) actualTamagotchi).isFlying()){
                                 if (new Random().nextInt(10) > 7){
@@ -238,7 +238,7 @@ public class Interaction {
                             System.out.println("\tName : " + tamagotchi.getName());
                             System.out.println("\tRace : " + tamagotchi.getRace());
                             System.out.println("\tType : " + tamagotchi.getType());
-                            System.out.println(tamagotchi.getHapinessBar());
+                            System.out.println(tamagotchi.getHappinessBar());
                         }
                     }
                     //for invalid 1st argument
