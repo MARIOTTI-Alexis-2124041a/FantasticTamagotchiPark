@@ -15,6 +15,11 @@ public class DarkElf extends Elf implements Dark {
         super(name, Race.ELF, Type.DARK);
     }
 
+    /**
+     * Adapt the value of the happiness bar according to the chosen joke
+     * @param jokeNumber The number that identifies the joke chosen by the user
+     * @return String : The happiness bar, with its new value
+     */
     @Override
     public String joke(int jokeNumber) {
         switch (jokeNumber) {
@@ -34,6 +39,10 @@ public class DarkElf extends Elf implements Dark {
         return displayHapinessBar();
     }
 
+    /**
+     * Gives a string representing the instrument played by the elf (a guitar for the DarkElf)
+     * @return String : the representation
+     */
     @Override
     public String playAnInstrument() {
         StringBuilder sb = new StringBuilder();
@@ -53,6 +62,10 @@ public class DarkElf extends Elf implements Dark {
         return sb.toString();
     }
 
+    /**
+     * Gives a string representing the elf crying
+     * @return String
+     */
     @Override
     public String cry() {
         StringBuilder sb = new StringBuilder();
@@ -64,6 +77,10 @@ public class DarkElf extends Elf implements Dark {
         return sb.toString();
     }
 
+    /**
+     * Pick a random complain in a list and return it
+     * @return String : the complain picked
+     */
     @Override
     public String complain() {
         ArrayList<String> listComplain = new ArrayList<>();

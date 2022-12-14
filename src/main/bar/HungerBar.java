@@ -16,7 +16,7 @@ public class HungerBar extends Bar {
 
     /**
      * Give a String representing the current state of the HungerBar : for instance, Hunger: ###--
-     * @return String : the representation of the current state
+     * @return String : The representation of the current state
      */
     @Override
     public String displayBar() {

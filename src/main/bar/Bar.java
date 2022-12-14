@@ -1,8 +1,15 @@
 package bar;
 
 public abstract class Bar {
-    private final int max; //The maximum value that a bar can reach
-    private int currentValue; //The current value of the bar
+    /**
+     * The maximum value that a bar can reach
+     */
+    private final int max;
+
+    /**
+     * The current value of the bar
+     */
+    private int currentValue;
 
     public Bar(int max, int currentValue) {
         this.max = max;

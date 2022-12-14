@@ -16,7 +16,7 @@ public class TirednessBar extends Bar{
 
     /**
      * Give a String representing the current state of the TirednessBar : for instance, Tiredness: ###--
-     * @return String : the representation of the current state
+     * @return String : The representation of the current state
      */
     @Override
     public String displayBar() {
