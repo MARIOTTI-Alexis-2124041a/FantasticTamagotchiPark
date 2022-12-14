@@ -5,7 +5,6 @@ import tamagotchi.type.Dark;
 import tamagotchi.type.Type;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class DarkElf extends Elf implements Dark {
@@ -19,19 +18,19 @@ public class DarkElf extends Elf implements Dark {
     public String joke(int jokeNumber) {
         switch (jokeNumber) {
             case 1 :
-                getHapinessBar().decreaseBar(20); // Type of joke = lovely
+                getHappinessBar().decreaseBar(20); // Type of joke = lovely
                 break;
             case 2 :
-                getHapinessBar().decreaseBar(30); // Type of joke = medium
+                getHappinessBar().decreaseBar(30); // Type of joke = medium
                 break;
             case 3 :
-                getHapinessBar().increaseBar(20); // Type of joke = not funny
+                getHappinessBar().increaseBar(20); // Type of joke = not funny
                 break;
             case 4 :
-                getHapinessBar().increaseBar(30); // Type of joke = nasty
+                getHappinessBar().increaseBar(30); // Type of joke = nasty
                 break;
         }
-        return displayHapinessBar();
+        return displayHappinessBar();
     }
 
     @Override

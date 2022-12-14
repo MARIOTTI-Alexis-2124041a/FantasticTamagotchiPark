@@ -13,7 +13,7 @@ public abstract class Tamagotchi {
     //Déclaration des Bar
     private Bar hungerBar = new HungerBar();
     private Bar tirenessBar = new TirednessBar();
-    private Bar hapinessBar = new HappinessBar();
+    private Bar happinessBar = new HappinessBar();
     private Race race;
     private Type type;
 
@@ -36,8 +36,8 @@ public abstract class Tamagotchi {
         return tirenessBar;
     }
 
-    public Bar getHapinessBar() {
-        return hapinessBar;
+    public Bar getHappinessBar() {
+        return happinessBar;
     }
 
     public String displayHungerBar() {
@@ -48,8 +48,8 @@ public abstract class Tamagotchi {
         return tirenessBar.displayBar();
     }
 
-    public String displayHapinessBar() {
-        return hapinessBar.displayBar();
+    public String displayHappinessBar() {
+        return happinessBar.displayBar();
     }
     public Race getRace() {
         return race;
@@ -58,7 +58,7 @@ public abstract class Tamagotchi {
         return type;
     }
     public String displayInformation() {
-        return name + "vitals :\n" + hungerBar.displayBar() + "\n" + tirenessBar.displayBar() + "\n" + hapinessBar.displayBar();
+        return name + "vitals :\n" + hungerBar.displayBar() + "\n" + tirenessBar.displayBar() + "\n" + happinessBar.displayBar();
     }
 
     public void feed (int quantity) {
@@ -92,23 +92,23 @@ public abstract class Tamagotchi {
         int time = new Random().nextInt(3600);
         //10 mins
         if (time < 600) {
-            hapinessBar.increaseBar(12);
-            return "you have pet " + this.name + " for less than 10 mins\n" + this.hapinessBar.displayBar();
+            happinessBar.increaseBar(12);
+            return "you have pet " + this.name + " for less than 10 mins\n" + this.happinessBar.displayBar();
         }
         //20 mins
         else if (time < 1200){
-            hapinessBar.increaseBar(24);
-            return "you have pet " + this.name + " for less than 20 mins\n" + this.hapinessBar.displayBar();
+            happinessBar.increaseBar(24);
+            return "you have pet " + this.name + " for less than 20 mins\n" + this.happinessBar.displayBar();
         }
         //45 mins
         else if (time < 2700){
-            hapinessBar.increaseBar(36);
-            return "you have pet " + this.name + " for less than 45 mins\n" + this.hapinessBar.displayBar();
+            happinessBar.increaseBar(36);
+            return "you have pet " + this.name + " for less than 45 mins\n" + this.happinessBar.displayBar();
         }
         //more than 45 mins
         else {
-            hapinessBar.increaseBar(50);
-            return "you have pet " + this.name + " for almost an hour\n" + this.hapinessBar.displayBar();
+            happinessBar.increaseBar(50);
+            return "you have pet " + this.name + " for almost an hour\n" + this.happinessBar.displayBar();
         }
     }
     abstract public String joke(int jokeNumber);

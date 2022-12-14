@@ -1,32 +1,46 @@
 package tamagotchi.elf;
 
 import tamagotchi.Race;
+import tamagotchi.type.Ligthning;
 import tamagotchi.type.Type;
 
-public class LigthningElf extends Elf {
+import java.util.ArrayList;
+import java.util.Random;
+
+public class LigthningElf extends Elf implements Ligthning {
 
     public LigthningElf(String name) {
         super(name, Race.ELF, Type.LIGTHNING);
     }
+
+    /**
+     * Change the happiness bar of ligthning elf depending on the joke
+     * @param jokeNum
+     * @return String
+     */
     @Override
     public String joke(int jokeNum) {
         switch (jokeNum) {
             case 1 :
-                getHapinessBar().increaseBar(30); // Type of joke = lovely
+                getHappinessBar().increaseBar(30); // Type of joke = lovely
                 break;
             case 2 :
-                getHapinessBar().increaseBar(40); // Type of joke = kind
+                getHappinessBar().increaseBar(40); // Type of joke = kind
                 break;
             case 3 :
-                getHapinessBar().decreaseBar(20); // Type of joke = bad
+                getHappinessBar().decreaseBar(20); // Type of joke = bad
                 break;
             case 4 :
-                getHapinessBar().decreaseBar(30); // Type of joke = nasty
+                getHappinessBar().decreaseBar(30); // Type of joke = nasty
                 break;
         }
-        return displayHapinessBar();
+        return displayHappinessBar();
     }
 
+    /**
+     * Create a string of the ligthning elf playing an instrument
+     * @return
+     */
     @Override
     public String playAnInstrument() {
         StringBuilder sb = new StringBuilder();
@@ -40,6 +54,38 @@ public class LigthningElf extends Elf {
         return sb.toString();
     }
 
+    /**
+     * Create a string of the ligthning elf kissing
+     * @return
+     */
+    @Override
+    public String kiss() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("     *   ---     *    ♡♡\n");
+        sb.append(" *     \\|  <|/ *  ♡♡♡  *\n");
+        sb.append("    *  ||\\3/||♡♡♡♡\n");
+        sb.append("  *    ||   ||   *\n");
+        return sb.toString();
+    }
+
+    /**
+     * Return a random compliment in a list of compliments of the ligthning elf
+     * @return String
+     */
+    @Override
+    public String compliment() {
+        ArrayList<String> listCompliments = new ArrayList<>();
+        listCompliments.add("I am so happy to be in you ♡");
+        listCompliments.add("I like talking with you");
+        listCompliments.add("You are so beautiful");
+        listCompliments.add("Ohh who is this amazing person front of me");
+        return listCompliments.get(new Random().nextInt(3));
+    }
+
+    /**
+     * Create a string of the ligthning elf
+     * @return String
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -54,5 +100,6 @@ public class LigthningElf extends Elf {
         LigthningElf ligthningElf = new LigthningElf("elf");
         System.out.println(ligthningElf.playAnInstrument());
         System.out.println(ligthningElf.toString());
+        System.out.println(ligthningElf.kiss());
     }
 }
