@@ -46,38 +46,48 @@ public class Interaction {
 
         Scanner inputScanner = new Scanner(System.in);
 
-        System.out.println("----------------------------------------\n--Welcome to FANTASTIC TAMAGOTCHI PARK--\n----------------------------------------\n\ntype \"help\" to know what you can do");
+        System.out.println("\n" +
+                " __      __   _                    _                                                                \n" +
+                " \\ \\    / /__| |__ ___ _ __  ___  | |_ ___                                                          \n" +
+                "  \\ \\/\\/ / -_) / _/ _ \\ '  \\/ -_) |  _/ _ \\                                                         \n" +
+                "   \\_/\\_/\\___|_\\__\\___/_|_|_\\___|  \\__\\___/                                                         \n" +
+                "                                                                                                    \n" +
+                "  ___         _           _   _      _____                         _      _    _   ___          _   \n" +
+                " | __|_ _ _ _| |_ __ _ __| |_(_)__  |_   _|_ _ _ __  __ _ __ _ ___| |_ __| |_ (_) | _ \\__ _ _ _| |__\n" +
+                " | _/ _` | ' \\  _/ _` (_-<  _| / _|   | |/ _` | '  \\/ _` / _` / _ \\  _/ _| ' \\| | |  _/ _` | '_| / /\n" +
+                " |_|\\__,_|_||_\\__\\__,_/__/\\__|_\\__|   |_|\\__,_|_|_|_\\__,_\\__, \\___/\\__\\__|_||_|_| |_| \\__,_|_| |_\\_\\\n" +
+                "                                                         |___/                                      \n\n\ntype \"help\" to know what you can do");
 
         while (! userMessage.equals("exit")){
             System.out.print("~FTP-$");
             userMessage = inputScanner.nextLine().trim();
-
-            //verifying if user type a global command
-            if (userMessage.length()>3 && userMessage.substring(0,3).equals("see")){
-                //for seeAll command
-                if (userMessage.equals("seeAll")){
-                    try {
-                        System.out.println("Actual : " + interaction.actualTamagotchi.getName() + "\n");
-                    } catch (Exception exception){
-                        System.out.println("Actual : no one\n");
+            //for seeAll command
+            if (userMessage.equals("seeAll")){
+                try {
+                    System.out.println("Actual : " + interaction.actualTamagotchi.getName() + "\n");
+                } catch (Exception exception){
+                    System.out.println("Actual : no one\n");
+                }
+                for ( ArrayList<Tamagotchi> family : interaction.allTamagotchiByFammily) {
+                    if (family.size()>0){
+                        System.out.println(family.get(0).getRace() +" :");
                     }
-                    for ( ArrayList<Tamagotchi> family : interaction.allTamagotchiByFammily) {
-                        if (family.size()>0){
-                            System.out.println(family.get(0).getRace() +" :");
-                        }
-                        for (Tamagotchi tamagotchi: family) {
-                            System.out.println("\t" + tamagotchi.getName());
-                            //for see ASCII Art
-                            System.out.println(tamagotchi);
-                        }
+                    for (Tamagotchi tamagotchi: family) {
+                        System.out.println("\t" + tamagotchi.getName());
+                        //for see ASCII Art
+                        System.out.println(tamagotchi);
                     }
                 }
+            }
+            //verifying if user type a global command
+            else if (userMessage.length()>2 && userMessage.substring(0,3).equals("see")){
+
                 //If there is no argument
-                else if (userMessage.equals("see")){
+                if (userMessage.equals("see")){
                     System.out.println("Please specify a Tamagotchi to see !");
                 }
-                //basic see command treatment
-                else {
+                else if (userMessage.substring(0,4).equals("see ")) {
+                    //basic see command treatment
                     String name = new String(userMessage.substring(4));
                     boolean isTamagotchiNotExist = true;
 
@@ -87,14 +97,17 @@ public class Interaction {
                                 interaction.actualTamagotchi = actualTamagotchi;
                                 isTamagotchiNotExist = false;
 
-                                System.out.println("Go to the "+ actualTamagotchi.getName() + " cage!");
+                                System.out.println("Go to the " + actualTamagotchi.getName() + " cage!");
                             }
                         }
                     }
-
-                    if (isTamagotchiNotExist){
+                    if (isTamagotchiNotExist) {
                         System.out.println("This tamagotchi does not exist ! Type seeAll to see all tamagotchi");
                     }
+                }
+                //for unknown command with a see prefix
+                else{
+                    System.out.println("Unknow command ! Please type Help to see all commads");
                 }
             }
             //verify if user type a command for a specific Tamagotchi
@@ -117,13 +130,32 @@ public class Interaction {
                         System.out.println("Invalid joke number! Please select a correct number!");
                     }
                 }
+                else if(userMessage.equals("information")){
+                    //display information
+                    System.out.println(interaction.actualTamagotchi.displayInformation());
+                }
+                else if (userMessage.equals("feed")){
+                    System.out.println("You what to feed " + interaction.actualTamagotchi.getName() + " with witch food ?\n\"1\" for a steak\n\"2\" for a salad\n\"3\" for a Tiramisu");
+
+                    String userChoice = inputScanner.nextLine().trim(); //user input
+
+                    //parse userChoice
+                    try{
+                        //display the tamagotchi joke reaction
+                        interaction.actualTamagotchi.feed(Integer.parseInt(userChoice));
+                        System.out.println(interaction.actualTamagotchi.getName() + " enjoy th meal...");
+                    }
+                    catch(NumberFormatException nfe){
+                        System.out.println("Invalid food number! Please select a correct number!");
+                    }
+                }
                 else{
                     System.out.println("Unknow command ! Please type Help to see all commads");
                 }
             }
             else {
-                if (userMessage.equals("feed") || userMessage.equals("joke") || userMessage.equals("pet") || userMessage.equals("sleep") || userMessage.equals("seeInformation") || userMessage.equals("sleep")){
-                    System.out.println("You need to see a specific Tamagotchi");
+                if (userMessage.equals("feed") || userMessage.equals("joke") || userMessage.equals("pet") || userMessage.equals("sleep") || userMessage.equals("information") || userMessage.equals("sleep")){
+                    System.out.println("You need to see a specific Tamagotchi with \"see\" command");
                 }
                 else{
                     System.out.println("Unknow command ! Please type Help to see all commads");
