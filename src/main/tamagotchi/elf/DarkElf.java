@@ -1,12 +1,14 @@
 package tamagotchi.elf;
 
 import tamagotchi.Race;
-import tamagotchi.fairy.DarkFairy;
+import tamagotchi.type.Dark;
 import tamagotchi.type.Type;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
-public class DarkElf extends Elf {
+public class DarkElf extends Elf implements Dark {
 
 
     public DarkElf(String name) {
@@ -52,9 +54,29 @@ public class DarkElf extends Elf {
     }
 
     @Override
+    public String cry() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("     ~   ___   ~    ~\n");
+        sb.append("   ~   \\|   |/ HHhhmm ~   \n");
+        sb.append(" ~     ||\\⌒/||     mm mm\n");
+        sb.append("       ||  ٥||  ~        mm  m..\n");
+        sb.append("           ٥ \n");
+        return sb.toString();
+    }
+
+    @Override
+    public String complain() {
+        List<String> listComplain = new ArrayList<>();
+        listComplain.add("I tired of living with ligthning elfs... ");
+        listComplain.add("I have been hungry for too long !");
+        listComplain.add("I am boring");
+        return listComplain.get(new Random().nextInt(2));
+    }
+
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("     ~   ---     ~\n");
+        sb.append("     ~   ___     ~\n");
         sb.append("   ~   \\|   |/ ~   ~\n");
         sb.append(" ~     ||\\ /||\n");
         sb.append("       ||   ||   ~\n");
@@ -65,5 +87,7 @@ public class DarkElf extends Elf {
         DarkElf darkElf = new DarkElf("elf");
         System.out.println(darkElf.playAnInstrument());
         System.out.println(darkElf.toString());
+        System.out.println(darkElf.cry());
+        System.out.println(darkElf.complain());
     }
 }

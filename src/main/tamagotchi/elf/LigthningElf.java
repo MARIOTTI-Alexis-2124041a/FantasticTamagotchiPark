@@ -45,7 +45,7 @@ public class LigthningElf extends Elf {
         StringBuilder sb = new StringBuilder();
         sb.append("     *   ---     *\n");
         sb.append(" *     \\|   |/ *   *\n");
-        sb.append("    *  ||\\ /||\n");
+        sb.append("    *  ||\\◡/||\n");
         sb.append("  *    ||   ||   *\n");
         return sb.toString();
     }
