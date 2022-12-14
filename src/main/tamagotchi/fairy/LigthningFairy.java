@@ -15,10 +15,10 @@ public class LigthningFairy extends Fairy{
                 getHapinessBar().decreaseBar(20); // Type of joke = lovely
                 break;
             case 2 :
-                getHapinessBar().decreaseBar(50); // Type of joke = kind
+                getHapinessBar().decreaseBar(30); // Type of joke = kind
                 break;
             case 3 :
-                getHapinessBar().increaseBar(50); // Type of joke = bad
+                getHapinessBar().increaseBar(30); // Type of joke = bad
                 break;
             case 4 :
                 getHapinessBar().increaseBar(20); // Type of joke = nasty
@@ -41,9 +41,9 @@ public class LigthningFairy extends Fairy{
     public String usePower() {
         StringBuilder sb = new StringBuilder();
         sb.append("  *   _     _  *   *    \n");
-        sb.append("*    / \\   / \\   *     x  \n");
-        sb.append("   * \\  ( )  / _____  xxx\n");
-        sb.append("       (| |)   =====    x\n");
+        sb.append("*    / \\   / \\   *     x     *  \n");
+        sb.append("   * \\  ( )  / _____  xxx   ***\n");
+        sb.append("       (| |)   =====    x     *\n");
         sb.append("      /_|_|_\\          \n");
 
         /*

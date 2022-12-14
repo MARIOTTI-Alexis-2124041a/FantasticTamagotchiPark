@@ -39,4 +39,31 @@ public class DarkFairyTest {
     public void testRace() {
         assertEquals(darkFairy.getRace(), Race.FAIRY);
     }
+
+    @Test
+    public void testDecreaseBar() {
+        int happinessBar = darkFairy.getHapinessBar().getCurrentValue();
+        darkFairy.joke(1);
+        assertEquals(darkFairy.getHapinessBar().getCurrentValue(), happinessBar - 20);
+    }
+
+    @Test
+    public void testDecreaseBar2() {
+        int happinessBar = darkFairy.getHapinessBar().getCurrentValue();
+        darkFairy.joke(2);
+        assertEquals(darkFairy.getHapinessBar().getCurrentValue(), happinessBar - 50);
+    }
+    @Test
+    public void testIncreaseBar() {
+        int happinessBar = darkFairy.getHapinessBar().getCurrentValue();
+        darkFairy.joke(3);
+        assertEquals(darkFairy.getHapinessBar().getCurrentValue(), happinessBar);
+    }
+
+    @Test
+    public void testIncreaseBar2() {
+        int happinessBar = darkFairy.getHapinessBar().getCurrentValue();
+        darkFairy.joke(4);
+        assertEquals(darkFairy.getHapinessBar().getCurrentValue(), happinessBar);
+    }
 }
