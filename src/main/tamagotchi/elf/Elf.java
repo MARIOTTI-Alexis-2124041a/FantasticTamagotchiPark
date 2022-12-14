@@ -8,12 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Elf extends Tamagotchi {
-    private final int earSize; //The size of the Elf's ears, between 10 and 20 cm
+    private int earSize; //The size of the Elf's ears, between 10 and 20 cm
     private final List<String> retortList;
 
-    public Elf(String name, Type type, int earSize) {
-        super(name, Race.ELF, type);
-        this.earSize = earSize;
+    public Elf(String name, Race race, Type type) {
+        super(name, race, type);
         this.retortList = new ArrayList<>();
         retortList.add("Oh! It's just you...");
         retortList.add("You are a very redundant person, that's what kind of person you are.");
