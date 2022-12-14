@@ -53,11 +53,17 @@ public class DarkElf extends Elf {
 
     @Override
     public String toString() {
-        return null;
+        StringBuilder sb = new StringBuilder();
+        sb.append("     ~   ---     ~\n");
+        sb.append("   ~   \\|   |/ ~   ~\n");
+        sb.append(" ~     ||\\ /||\n");
+        sb.append("       ||   ||   ~\n");
+        return sb.toString();
     }
 
     public static void main(String args[]) {
         DarkElf darkElf = new DarkElf("elf");
         System.out.println(darkElf.playAnInstrument());
+        System.out.println(darkElf.toString());
     }
 }
