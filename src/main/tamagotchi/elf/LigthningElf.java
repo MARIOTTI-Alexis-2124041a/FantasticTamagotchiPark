@@ -12,16 +12,16 @@ public class LigthningElf extends Elf {
     public String joke(int jokeNum) {
         switch (jokeNum) {
             case 1 :
-                getHapinessBar().decreaseBar(20); // Type of joke = lovely
+                getHapinessBar().increaseBar(30); // Type of joke = lovely
                 break;
             case 2 :
-                getHapinessBar().decreaseBar(30); // Type of joke = kind
+                getHapinessBar().increaseBar(40); // Type of joke = kind
                 break;
             case 3 :
-                getHapinessBar().increaseBar(30); // Type of joke = bad
+                getHapinessBar().decreaseBar(20); // Type of joke = bad
                 break;
             case 4 :
-                getHapinessBar().increaseBar(20); // Type of joke = nasty
+                getHapinessBar().decreaseBar(30); // Type of joke = nasty
                 break;
         }
         return displayHapinessBar();
