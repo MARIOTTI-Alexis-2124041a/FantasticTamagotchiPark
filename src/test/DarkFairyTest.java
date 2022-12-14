@@ -3,6 +3,8 @@ import tamagotchi.Race;
 import tamagotchi.fairy.DarkFairy;
 import tamagotchi.type.Type;
 
+import java.util.ArrayList;
+
 import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -65,5 +67,16 @@ public class DarkFairyTest {
         int happinessBar = darkFairy.getHappinessBar().getCurrentValue();
         darkFairy.joke(4);
         assertEquals(darkFairy.getHappinessBar().getCurrentValue(), happinessBar);
+    }
+
+    @Test
+    public void testComplain() {
+        ArrayList<String> listComplain = new ArrayList<>();
+        listComplain.add("I tired of living with ligthning fairy... ");
+        listComplain.add("I have been hungry for too long !");
+        listComplain.add("I am boring...");
+        listComplain.add("My wings are to small !!");
+        listComplain.add("pfffFFFF");
+        assertTrue(listComplain.contains(darkFairy.complain()));
     }
 }

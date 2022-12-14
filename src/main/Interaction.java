@@ -223,21 +223,21 @@ public class Interaction {
                             System.out.println("\tName : " + tamagotchi.getName());
                             System.out.println("\tRace : " + tamagotchi.getRace());
                             System.out.println("\tType : " + tamagotchi.getType());
-                            System.out.println(tamagotchi.getTirenessBar().displayBar());
+                            System.out.println(tamagotchi.displayTirenessBar());
                         }
                     } else if (userMessageSplit[1].equals("hunger")){
                         for (Tamagotchi tamagotchi : interaction.sortByHunger()) {
                             System.out.println("\tName : " + tamagotchi.getName());
                             System.out.println("\tRace : " + tamagotchi.getRace());
                             System.out.println("\tType : " + tamagotchi.getType());
-                            System.out.println(tamagotchi.getHungerBar().displayBar());
+                            System.out.println(tamagotchi.displayHungerBar());
                         }
                     } else if (userMessageSplit[1].equals("happiness")){
                         for (Tamagotchi tamagotchi : interaction.sortByHappiness()) {
                             System.out.println("\tName : " + tamagotchi.getName());
                             System.out.println("\tRace : " + tamagotchi.getRace());
                             System.out.println("\tType : " + tamagotchi.getType());
-                            System.out.println(tamagotchi.getHappinessBar().displayBar());
+                            System.out.println(tamagotchi.displayHappinessBar());
                         }
                     }
                     //for invalid 1st argument

@@ -14,7 +14,7 @@ public class LigthningElf extends Elf implements Lightning {
     }
 
     /**
-     * Change the happiness bar of ligthning elf depending on the joke
+     * Change the happiness bar of lightning elf depending on the joke
      * @param jokeNum
      * @return String : the happiness bar
      */
@@ -38,7 +38,7 @@ public class LigthningElf extends Elf implements Lightning {
     }
 
     /**
-     * Create a string of the ligthning elf playing an instrument
+     * Create a string of the lightning elf playing an instrument
      * @return String
      */
     @Override
@@ -55,7 +55,7 @@ public class LigthningElf extends Elf implements Lightning {
     }
 
     /**
-     * Create a string of the ligthning elf kissing
+     * Create a string of the lightning elf kissing
      * @return String
      */
     @Override
@@ -69,7 +69,7 @@ public class LigthningElf extends Elf implements Lightning {
     }
 
     /**
-     * Return a random compliment from a list of compliments said by the ligthning elf
+     * Return a random compliment from a list of compliments said by the lightning elf
      * @return String
      */
     @Override
@@ -83,7 +83,7 @@ public class LigthningElf extends Elf implements Lightning {
     }
 
     /**
-     * Create a string of the ligthning elf
+     * Create a string of the lightning elf
      * @return String
      */
     @Override

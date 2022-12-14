@@ -57,7 +57,7 @@ public class DarkFairy extends Fairy implements Dark {
 
     @Override
     public String complain() {
-        List<String> listComplain = new ArrayList<>();
+        ArrayList<String> listComplain = new ArrayList<>();
         listComplain.add("I tired of living with ligthning fairy... ");
         listComplain.add("I have been hungry for too long !");
         listComplain.add("I am boring...");

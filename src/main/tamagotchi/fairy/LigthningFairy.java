@@ -14,7 +14,7 @@ public class LigthningFairy extends Fairy implements Lightning {
     }
 
     /**
-     * Change the happiness bar of ligthning fairy depending on the joke
+     * Change the happiness bar of lightning fairy depending on the joke
      * @param jokeNumber
      * @return String
      */
@@ -38,7 +38,7 @@ public class LigthningFairy extends Fairy implements Lightning {
     }
 
     /**
-     * Create a string of the ligthning fairy using his power
+     * Create a string of the lightning fairy using his power
      * @return String
      */
     @Override
@@ -53,7 +53,7 @@ public class LigthningFairy extends Fairy implements Lightning {
     }
 
     /**
-     * Create a string of the ligthning fairy kissing
+     * Create a string of the lightning fairy kissing
      * @return String
      */
     @Override
@@ -71,7 +71,7 @@ public class LigthningFairy extends Fairy implements Lightning {
     }
 
     /**
-     * Return a random compliment from a list of compliments said by the ligthning fairy
+     * Return a random compliment from a list of compliments said by the lightning fairy
      * @return String
      */
     @Override
@@ -85,7 +85,7 @@ public class LigthningFairy extends Fairy implements Lightning {
     }
 
     /**
-     * Create a string of the ligthning fairy
+     * Create a string of the lightning fairy
      * @return String
      */
     @Override
