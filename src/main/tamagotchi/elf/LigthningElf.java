@@ -69,7 +69,7 @@ public class LigthningElf extends Elf implements Ligthning {
     }
 
     /**
-     * Return a random compliment in a list of compliments of the ligthning elf
+     * Return a random compliment from a list of compliments said by the ligthning elf
      * @return String
      */
     @Override

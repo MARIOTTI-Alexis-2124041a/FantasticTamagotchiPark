@@ -71,7 +71,7 @@ public class LigthningFairy extends Fairy implements Ligthning {
     }
 
     /**
-     * Return a random compliment in a list of compliments of the ligthning fairy
+     * Return a random compliment from a list of compliments said by the ligthning fairy
      * @return String
      */
     @Override
