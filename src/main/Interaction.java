@@ -9,6 +9,8 @@ import tamagotchi.elf.LigthningElf;
 import tamagotchi.fairy.DarkFairy;
 import tamagotchi.fairy.Fairy;
 import tamagotchi.fairy.LigthningFairy;
+import tamagotchi.type.Dark;
+import tamagotchi.type.Type;
 
 import java.util.*;
 
@@ -82,7 +84,7 @@ public class Interaction {
                     try {
                         Thread.currentThread().sleep(30000); //wait 30 secs
                     } catch (InterruptedException e) {
-                        e.printStackTrace();
+                        break;
                     }
                     //decreasing all bars
                     for (ArrayList<Tamagotchi> family : interaction.allTamagotchiByFammily) {
@@ -122,7 +124,7 @@ public class Interaction {
                         System.out.println(family.get(0).getRace() +" :");
                     }
                     for (Tamagotchi tamagotchi: family) {
-                        System.out.println("\t" + tamagotchi.getName());
+                        System.out.println("\tName: " + tamagotchi.getName() + "\n\tType: " + tamagotchi.getType());
                         //for see ASCII Art
                         System.out.println(tamagotchi);
                     }
@@ -257,6 +259,22 @@ public class Interaction {
                     }
                     else {
                         System.out.println(interaction.actualTamagotchi.getName() + " is not an fairy, chose an fairy to use \"power\" command");
+                    }
+                }
+                else if (userMessage.equals("cry")){
+                    if (interaction.actualTamagotchi.getType() == Type.DARK){
+                        System.out.println(((Dark) interaction.actualTamagotchi).cry());
+                    }
+                    else {
+                        System.out.println(interaction.actualTamagotchi.getName() + " is not dark, chose a tamagotchi with dark type to use \"cry\" command");
+                    }
+                }
+                else if (userMessage.equals("complain")){
+                    if (interaction.actualTamagotchi.getType() == Type.DARK){
+                        System.out.println(((Dark) interaction.actualTamagotchi).complain());
+                    }
+                    else {
+                        System.out.println(interaction.actualTamagotchi.getName() + " is not dark, chose a tamagotchi with dark type to use \"complain\" command");
                     }
                 }
                 else{
