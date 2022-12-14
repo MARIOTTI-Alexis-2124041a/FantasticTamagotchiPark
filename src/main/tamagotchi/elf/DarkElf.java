@@ -66,7 +66,7 @@ public class DarkElf extends Elf implements Dark {
 
     @Override
     public String complain() {
-        List<String> listComplain = new ArrayList<>();
+        ArrayList<String> listComplain = new ArrayList<>();
         listComplain.add("I'm tired of living with ligthning elfs... ");
         listComplain.add("I have been hungry for too long !");
         listComplain.add("I am boring");
