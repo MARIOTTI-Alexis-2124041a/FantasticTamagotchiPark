@@ -1,8 +1,8 @@
 package bar;
 
 public abstract class Bar {
-    private final int max;
-    private int currentValue;
+    private final int max; //The maximum value that a bar can reach
+    private int currentValue; //The current value of the bar
 
     public Bar(int max, int currentValue) {
         this.max = max;
@@ -17,6 +17,11 @@ public abstract class Bar {
         return max;
     }
 
+    /**
+     * Increase the value (currentValue) of the bar by the value given in parameter
+     * Also makes sure that currentValue never goes beyond the max
+     * @param val the value to add
+     */
     public void increaseBar(int val) {
         if (currentValue + val > max) {
             currentValue = max;
@@ -25,6 +30,11 @@ public abstract class Bar {
         }
     }
 
+    /**
+     * Decrease the value (currentValue) of the bar by the value given in parameter
+     * Also makes sure that currentValue never goes under zero
+     * @param val the value to substract
+     */
     public void decreaseBar(int val) {
         if (currentValue - val < 0) {
             currentValue = 0;
