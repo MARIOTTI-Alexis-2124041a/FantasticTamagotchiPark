@@ -3,8 +3,12 @@
 
 import bar.HungerBar;
 import tamagotchi.Tamagotchi;
+import tamagotchi.elf.DarkElf;
+import tamagotchi.elf.Elf;
+import tamagotchi.elf.LigthningElf;
 import tamagotchi.fairy.DarkFairy;
 import tamagotchi.fairy.Fairy;
+import tamagotchi.fairy.LigthningFairy;
 
 import java.util.*;
 
@@ -31,10 +35,26 @@ public class Interaction {
 
         //create and add all tamagotchi
 
-        ArrayList<Tamagotchi> fairy = new ArrayList<>();
+        //fairy family
+        ArrayList<Tamagotchi> fairies = new ArrayList<>();
+
         Tamagotchi loue = new DarkFairy("Loue");
-        fairy.add(loue);
-        this.allTamagotchiByFammily.add(fairy);
+        fairies.add(loue);
+
+        Tamagotchi elisa = new LigthningFairy("Elisa");
+        fairies.add(elisa);
+
+        //Elf family
+        ArrayList<Tamagotchi> elves = new ArrayList<>();
+
+        Tamagotchi urbain = new DarkElf("Urbain");
+        elves.add(urbain);
+
+        Tamagotchi giovanni = new LigthningElf("Giovanny");
+        elves.add(giovanni);
+
+        this.allTamagotchiByFammily.add(elves);
+        this.allTamagotchiByFammily.add(fairies);
     }
 
     public static void main(String[] args) {
@@ -204,7 +224,39 @@ public class Interaction {
                         System.out.println(((Fairy) interaction.actualTamagotchi).fly());
                     }
                     else {
-                        System.out.println(interaction.actualTamagotchi.getName() + " is not an Elf, chose an Elf to use \"fly\" command");
+                        System.out.println(interaction.actualTamagotchi.getName() + " is not an fairy, chose an fairy to use \"fly\" command");
+                    }
+                }
+                else if (userMessage.equals("retort")){
+                    if (interaction.actualTamagotchi instanceof Elf){
+                        System.out.println(((Elf) interaction.actualTamagotchi).sillyRetort());
+                    }
+                    else {
+                        System.out.println(interaction.actualTamagotchi.getName() + " is not an elf, chose an elf to use \"retort\" command");
+                    }
+                }
+                else if (userMessage.equals("whoHasBiggest")){
+                    if (interaction.actualTamagotchi instanceof Elf){
+                        System.out.println(((Elf) interaction.actualTamagotchi).sayHeHasBiggest());
+                    }
+                    else {
+                        System.out.println(interaction.actualTamagotchi.getName() + " is not an elf, chose an elf to use \"whoHasBiggest\" command");
+                    }
+                }
+                else if (userMessage.equals("music")){
+                    if (interaction.actualTamagotchi instanceof Elf){
+                        System.out.println(((Elf) interaction.actualTamagotchi).playAnInstrument());
+                    }
+                    else {
+                        System.out.println(interaction.actualTamagotchi.getName() + " is not an elf, chose an elf to use \"music\" command");
+                    }
+                }
+                else if (userMessage.equals("power")){
+                    if (interaction.actualTamagotchi instanceof Fairy){
+                        System.out.println(((Fairy) interaction.actualTamagotchi).usePower());
+                    }
+                    else {
+                        System.out.println(interaction.actualTamagotchi.getName() + " is not an fairy, chose an fairy to use \"power\" command");
                     }
                 }
                 else{
@@ -219,8 +271,8 @@ public class Interaction {
                     System.out.println("Unknown command ! Please type \"Help\" to see all commands");
                 }
             }
-
-            barManagement.stop();
         }
+        //for stop the game
+        barManagement.interrupt();
     }
 }

@@ -33,7 +33,7 @@ public class LigthningElf extends Elf {
         sb.append("                     /|\n");
         sb.append("       =  =  =      / |\n");
         sb.append("  ____| || || |____/  | -_-_-_-_-_-_\n");
-        sb.append("|)----| || || |____   |     Oh Happy, happy\n");
+        sb.append("|)----| || || |____   |     Tu tu tu tu, tuuu tuu\n");
         sb.append("  ((  | || || |  ))\\  | _-_-_-_-_-_-\n");
         sb.append("   \\\\_|_||_||_|_//  \\ |\n");
         sb.append("    \\___________/    \\|");

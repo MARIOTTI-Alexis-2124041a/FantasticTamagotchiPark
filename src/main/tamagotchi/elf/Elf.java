@@ -6,6 +6,7 @@ import tamagotchi.type.Type;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public abstract class Elf extends Tamagotchi {
     private int earSize; //The size of the Elf's ears, between 10 and 20 cm
@@ -16,6 +17,7 @@ public abstract class Elf extends Tamagotchi {
         this.retortList = new ArrayList<>();
         retortList.add("Oh! It's just you...");
         retortList.add("You are a very redundant person, that's what kind of person you are.");
+        this.earSize = new Random().nextInt(5,10);
     }
 
     public String sillyRetort() {

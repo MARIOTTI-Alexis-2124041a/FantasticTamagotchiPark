@@ -46,5 +46,5 @@ public abstract class Fairy extends Tamagotchi {
         return new Random().nextInt(100) + 1;
     }
 
-    abstract String usePower();
+    public abstract String usePower();
 }
