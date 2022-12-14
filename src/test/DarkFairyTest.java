@@ -42,28 +42,28 @@ public class DarkFairyTest {
 
     @Test
     public void testDecreaseBar() {
-        int happinessBar = darkFairy.getHapinessBar().getCurrentValue();
+        int happinessBar = darkFairy.getHappinessBar().getCurrentValue();
         darkFairy.joke(1);
-        assertEquals(darkFairy.getHapinessBar().getCurrentValue(), happinessBar - 20);
+        assertEquals(darkFairy.getHappinessBar().getCurrentValue(), happinessBar - 20);
     }
 
     @Test
     public void testDecreaseBar2() {
-        int happinessBar = darkFairy.getHapinessBar().getCurrentValue();
+        int happinessBar = darkFairy.getHappinessBar().getCurrentValue();
         darkFairy.joke(2);
-        assertEquals(darkFairy.getHapinessBar().getCurrentValue(), happinessBar - 50);
+        assertEquals(darkFairy.getHappinessBar().getCurrentValue(), happinessBar - 50);
     }
     @Test
     public void testIncreaseBar() {
-        int happinessBar = darkFairy.getHapinessBar().getCurrentValue();
+        int happinessBar = darkFairy.getHappinessBar().getCurrentValue();
         darkFairy.joke(3);
-        assertEquals(darkFairy.getHapinessBar().getCurrentValue(), happinessBar);
+        assertEquals(darkFairy.getHappinessBar().getCurrentValue(), happinessBar);
     }
 
     @Test
     public void testIncreaseBar2() {
-        int happinessBar = darkFairy.getHapinessBar().getCurrentValue();
+        int happinessBar = darkFairy.getHappinessBar().getCurrentValue();
         darkFairy.joke(4);
-        assertEquals(darkFairy.getHapinessBar().getCurrentValue(), happinessBar);
+        assertEquals(darkFairy.getHappinessBar().getCurrentValue(), happinessBar);
     }
 }
