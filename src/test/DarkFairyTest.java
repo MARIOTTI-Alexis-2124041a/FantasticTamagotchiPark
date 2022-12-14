@@ -15,14 +15,14 @@ public class DarkFairyTest {
     }
 
     @Test
-    public void testFlyFistTime() {
-        assertEquals(darkFairy.fly(), "The fairy is flying");
+    public void testFlyFirstTime() {
+        assertEquals(darkFairy.fly(), "victoria is now flying");
     }
 
     @Test
     public void testFlySecondTime() {
         darkFairy.fly();
-        assertEquals(darkFairy.fly(), "The fairy is already flying");
+        assertEquals(darkFairy.fly(), "victoria is already flying");
     }
 
     @Test
@@ -51,7 +51,7 @@ public class DarkFairyTest {
     public void testDecreaseBar2() {
         int happinessBar = darkFairy.getHappinessBar().getCurrentValue();
         darkFairy.joke(2);
-        assertEquals(darkFairy.getHappinessBar().getCurrentValue(), happinessBar - 50);
+        assertEquals(darkFairy.getHappinessBar().getCurrentValue(), happinessBar - 30);
     }
     @Test
     public void testIncreaseBar() {

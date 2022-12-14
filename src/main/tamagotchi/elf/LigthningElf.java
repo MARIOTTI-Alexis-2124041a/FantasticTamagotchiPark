@@ -16,7 +16,7 @@ public class LigthningElf extends Elf implements Ligthning {
     /**
      * Change the happiness bar of ligthning elf depending on the joke
      * @param jokeNum
-     * @return String
+     * @return String : the happiness bar
      */
     @Override
     public String joke(int jokeNum) {
@@ -39,7 +39,7 @@ public class LigthningElf extends Elf implements Ligthning {
 
     /**
      * Create a string of the ligthning elf playing an instrument
-     * @return
+     * @return String
      */
     @Override
     public String playAnInstrument() {
@@ -56,7 +56,7 @@ public class LigthningElf extends Elf implements Ligthning {
 
     /**
      * Create a string of the ligthning elf kissing
-     * @return
+     * @return String
      */
     @Override
     public String kiss() {
