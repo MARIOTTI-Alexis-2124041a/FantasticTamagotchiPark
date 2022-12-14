@@ -22,10 +22,16 @@ public abstract class Fairy extends Tamagotchi {
 
     public String fly() {
         if (isFlying) {
-            return "The fairy is already flying";
+            return this.getName() +" is already flying";
         }
         isFlying = true;
-        return "The fairy is flying";
+        return this.getName() + " is now flying";
+    }
+
+    public void stopFly(){
+        if (this.isFlying){
+            this.isFlying = false;
+        }
     }
 
     public int getWingsSize() {

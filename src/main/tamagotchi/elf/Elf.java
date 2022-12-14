@@ -18,8 +18,6 @@ public abstract class Elf extends Tamagotchi {
         retortList.add("You are a very redundant person, that's what kind of person you are.");
     }
 
-    abstract public String joke(int jokeNum);
-
     public String sillyRetort() {
         int randomRetortNum = (int) (Math.random() * retortList.size());
         return retortList.get(randomRetortNum);

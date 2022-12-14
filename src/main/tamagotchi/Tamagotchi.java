@@ -93,22 +93,22 @@ public abstract class Tamagotchi {
         //10 mins
         if (time < 600) {
             hapinessBar.increaseBar(12);
-            return "you have pet " + this.name + " for less than 10 mins\n" + this.hungerBar.displayBar();
+            return "you have pet " + this.name + " for less than 10 mins\n" + this.hapinessBar.displayBar();
         }
         //20 mins
         else if (time < 1200){
             hapinessBar.increaseBar(24);
-            return "you have pet " + this.name + " for less than 20 mins\n" + this.hungerBar.displayBar();
+            return "you have pet " + this.name + " for less than 20 mins\n" + this.hapinessBar.displayBar();
         }
         //45 mins
         else if (time < 2700){
             hapinessBar.increaseBar(36);
-            return "you have pet " + this.name + " for less than 45 mins\n" + this.hungerBar.displayBar();
+            return "you have pet " + this.name + " for less than 45 mins\n" + this.hapinessBar.displayBar();
         }
         //more than 45 mins
         else {
             hapinessBar.increaseBar(50);
-            return "you have pet " + this.name + " for almost an hour\n" + this.hungerBar.displayBar();
+            return "you have pet " + this.name + " for almost an hour\n" + this.hapinessBar.displayBar();
         }
     }
     abstract public String joke(int jokeNumber);

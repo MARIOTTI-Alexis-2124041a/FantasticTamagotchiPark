@@ -4,6 +4,7 @@
 import bar.HungerBar;
 import tamagotchi.Tamagotchi;
 import tamagotchi.fairy.DarkFairy;
+import tamagotchi.fairy.Fairy;
 
 import java.util.*;
 
@@ -68,7 +69,16 @@ public class Interaction {
                         for (Tamagotchi actualTamagotchi : family) {
                             actualTamagotchi.getHungerBar().decreaseBar((int) (actualTamagotchi.getHungerBar().getMax()*0.1));
                             actualTamagotchi.getHapinessBar().decreaseBar((int) (actualTamagotchi.getHapinessBar().getMax()*0.07));
-                            actualTamagotchi.getTirenessBar().decreaseBar((int) (actualTamagotchi.getTirenessBar().getMax()*0.05));
+                            //For fairy flying
+                            if (actualTamagotchi instanceof Fairy && ((Fairy) actualTamagotchi).isFlying()){
+                                if (new Random().nextInt(10) > 7){
+                                    ((Fairy) actualTamagotchi).stopFly();
+                                }
+                                //tired x2 because flying
+                                actualTamagotchi.getTirenessBar().decreaseBar((int) (actualTamagotchi.getTirenessBar().getMax()*0.1));
+                            } else{
+                                actualTamagotchi.getTirenessBar().decreaseBar((int) (actualTamagotchi.getTirenessBar().getMax()*0.05));
+                            }
                         }
                     }
                 }
@@ -129,6 +139,9 @@ public class Interaction {
                     System.out.println("Unknow command ! Please type Help to see all commads");
                 }
             }
+            else if (userMessage.equals("exit")){
+                System.out.println("See you soon");
+            }
             //verify if user type a command for a specific Tamagotchi
             else if (interaction.actualTamagotchi != null){
                 if (userMessage.equals("joke")){
@@ -186,20 +199,28 @@ public class Interaction {
                 else if (userMessage.equals("sleep")){
                     System.out.println(interaction.actualTamagotchi.sleep());
                 }
+                else if (userMessage.equals("fly")){
+                    if (interaction.actualTamagotchi instanceof Fairy){
+                        System.out.println(((Fairy) interaction.actualTamagotchi).fly());
+                    }
+                    else {
+                        System.out.println(interaction.actualTamagotchi.getName() + " is not an Elf, chose an Elf to use \"fly\" command");
+                    }
+                }
                 else{
-                    System.out.println("Unknown command ! Please type Help to see all commands");
+                    System.out.println("Unknown command ! Please type \"Help\" to see all commands");
                 }
             }
             else {
-                if (userMessage.equals("feed") || userMessage.equals("joke") || userMessage.equals("pet") || userMessage.equals("sleep") || userMessage.equals("information") || userMessage.equals("sleep")){
+                if (userMessage.equals("feed") || userMessage.equals("joke") || userMessage.equals("pet") || userMessage.equals("sleep") || userMessage.equals("information") || userMessage.equals("sleep") || userMessage.equals("fly") || userMessage.equals("retort") || userMessage.equals("whoHasBiggest") || userMessage.equals("music")|| userMessage.equals("power") || userMessage.equals("cry") || userMessage.equals("complain")){
                     System.out.println("You need to see a specific Tamagotchi with \"see\" command");
                 }
                 else{
-                    System.out.println("Unknown command ! Please type Help to see all commands");
+                    System.out.println("Unknown command ! Please type \"Help\" to see all commands");
                 }
             }
 
-            //implement randoms actions of the actual tamagotchi
+            barManagement.stop();
         }
     }
 }
