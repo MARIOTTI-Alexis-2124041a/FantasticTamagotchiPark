@@ -1,7 +1,7 @@
 
 
-import bar.Bar;
-import tamagotchi.Race;
+
+import bar.HungerBar;
 import tamagotchi.Tamagotchi;
 import tamagotchi.fairy.DarkFairy;
 
@@ -55,9 +55,31 @@ public class Interaction {
                 " |_|\\__,_|_||_\\__\\__,_/__/\\__|_\\__|   |_|\\__,_|_|_|_\\__,_\\__, \\___/\\__\\__|_||_|_| |_| \\__,_|_| |_\\_\\\n" +
                 "                                                         |___/                                      \n\n\ntype \"help\" to know what you can do");
 
+        Thread barManagement = new Thread(){
+            public void run(){
+                while (true){
+                    try {
+                        Thread.currentThread().sleep(3000); //wait 30 secs
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    //decreasing all bars
+                    for (ArrayList<Tamagotchi> family : interaction.allTamagotchiByFammily) {
+                        for (Tamagotchi actualTamagotchi : family) {
+                            actualTamagotchi.getHungerBar().decreaseBar((int) (actualTamagotchi.getHungerBar().getMax()*0.1));
+                            actualTamagotchi.getHapinessBar().decreaseBar((int) (actualTamagotchi.getHapinessBar().getMax()*0.15));
+                            actualTamagotchi.getTirenessBar().decreaseBar((int) (actualTamagotchi.getTirenessBar().getMax()*0.2));
+                        }
+                    }
+                }
+            }
+        };
+        //Start the bar management
+        barManagement.start();
+
         while (! userMessage.equals("exit")){
             System.out.print("~FTP-$");
-            userMessage = inputScanner.nextLine().trim();
+            userMessage = inputScanner.nextLine().trim(); //
             //for seeAll command
             if (userMessage.equals("seeAll")){
                 try {
@@ -160,6 +182,9 @@ public class Interaction {
                 }
                 else if (userMessage.equals("pet")){
                     System.out.println(interaction.actualTamagotchi.pet());
+                }
+                else if (userMessage.equals("sleep")){
+                    System.out.println(interaction.actualTamagotchi.sleep());
                 }
                 else{
                     System.out.println("Unknown command ! Please type Help to see all commands");
