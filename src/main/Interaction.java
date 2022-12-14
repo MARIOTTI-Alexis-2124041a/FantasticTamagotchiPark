@@ -59,7 +59,7 @@ public class Interaction {
             public void run(){
                 while (true){
                     try {
-                        Thread.currentThread().sleep(3000); //wait 30 secs
+                        Thread.currentThread().sleep(30000); //wait 30 secs
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -67,8 +67,8 @@ public class Interaction {
                     for (ArrayList<Tamagotchi> family : interaction.allTamagotchiByFammily) {
                         for (Tamagotchi actualTamagotchi : family) {
                             actualTamagotchi.getHungerBar().decreaseBar((int) (actualTamagotchi.getHungerBar().getMax()*0.1));
-                            actualTamagotchi.getHapinessBar().decreaseBar((int) (actualTamagotchi.getHapinessBar().getMax()*0.15));
-                            actualTamagotchi.getTirenessBar().decreaseBar((int) (actualTamagotchi.getTirenessBar().getMax()*0.2));
+                            actualTamagotchi.getHapinessBar().decreaseBar((int) (actualTamagotchi.getHapinessBar().getMax()*0.07));
+                            actualTamagotchi.getTirenessBar().decreaseBar((int) (actualTamagotchi.getTirenessBar().getMax()*0.05));
                         }
                     }
                 }
