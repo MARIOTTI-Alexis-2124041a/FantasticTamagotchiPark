@@ -134,6 +134,21 @@ public class Interaction {
                     //display information
                     System.out.println(interaction.actualTamagotchi.displayInformation());
                 }
+                else if (userMessage.equals("feed")){
+                    System.out.println("You what to feed " + interaction.actualTamagotchi.getName() + " with witch food ?\n\"1\" for a steak\n\"2\" for a salad\n\"3\" for a Tiramisu");
+
+                    String userChoice = inputScanner.nextLine().trim(); //user input
+
+                    //parse userChoice
+                    try{
+                        //display the tamagotchi joke reaction
+                        interaction.actualTamagotchi.feed(Integer.parseInt(userChoice));
+                        System.out.println(interaction.actualTamagotchi.getName() + " enjoy th meal...");
+                    }
+                    catch(NumberFormatException nfe){
+                        System.out.println("Invalid food number! Please select a correct number!");
+                    }
+                }
                 else{
                     System.out.println("Unknow command ! Please type Help to see all commads");
                 }
