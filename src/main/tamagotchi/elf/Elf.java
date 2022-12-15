@@ -24,7 +24,7 @@ public abstract class Elf extends Tamagotchi {
         this.retortList = new ArrayList<>();
         retortList.add("Oh! It's just you...");
         retortList.add("You are a very redundant person, that's what kind of person you are.");
-        this.earSize = new Random().nextInt(5,10);
+        this.earSize = new Random().nextInt(20 -10) + 10;
     }
 
     /**

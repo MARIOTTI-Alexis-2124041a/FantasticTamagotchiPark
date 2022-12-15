@@ -43,6 +43,10 @@ public class DarkFairyTest {
     }
 
     @Test
+    public void testName() {
+        assertEquals(darkFairy.getName(), "victoria");
+    }
+    @Test
     public void testDecreaseBar() {
         int happinessBar = darkFairy.getHappinessBar().getCurrentValue();
         darkFairy.joke(1);
