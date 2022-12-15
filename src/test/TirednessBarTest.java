@@ -1,48 +1,47 @@
 import bar.Bar;
-import bar.HungerBar;
+import bar.TirednessBar;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class HungerBarTest {
-    private final Bar hungerBar = new HungerBar();
+public class TirednessBarTest {
+    private final Bar tirednessBar = new TirednessBar();
 
     @Test
-    public void getMaxShouldBe115(){
-        assertEquals(hungerBar.getMax(), 115);
+    public void getMaxShouldBe25(){
+        assertEquals(tirednessBar.getMax(), 25);
+    }
+    @Test
+    public void currentValueOf25ShouldBeVital() {
+        tirednessBar.decreaseBar(85); //CurrentValue = 25
+        assertTrue(tirednessBar.isVital());
     }
 
     @Test
-    public void currentValueOf20ShouldBeVital() {
-        hungerBar.decreaseBar(85); //CurrentValue = 20
-        assertTrue(hungerBar.isVital());
-    }
-
-    @Test
-    public void currentValueOf40ShouldNotBeVital() {
-        hungerBar.decreaseBar(65); //CurrentValue = 40
-        assertFalse(hungerBar.isVital());
+    public void currentValueOf10ShouldNotBeVital() {
+        tirednessBar.decreaseBar(10); //CurrentValue = 15
+        assertFalse(tirednessBar.isVital());
     }
 
     @Test
     public void nbCharacterDisplayedWithFullBar() {
         int nbFullChar = 0;
-        String display = hungerBar.displayBar();
+        String display = tirednessBar.displayBar();
         for(int i = 0; i < display.length(); ++i) {
             if (display.charAt(i) == '#') {
                 nbFullChar++;
             }
         }
-        assertEquals(nbFullChar, 11);
+        assertEquals(nbFullChar, 5);
     }
 
     @Test
     public void nbCharacterDisplayedWithEmptyBar() {
-        hungerBar.decreaseBar(120); //Empty the bar, currentValue = 0
+        tirednessBar.decreaseBar(120); //Empty the bar, currentValue = 0
         int nbFullChar = 0;
-        String display = hungerBar.displayBar();
+        String display = tirednessBar.displayBar();
         for(int i = 0; i < display.length(); ++i) {
             if (display.charAt(i) == '#') {
                 nbFullChar++;
@@ -53,14 +52,14 @@ public class HungerBarTest {
 
     @Test
     public void nbCharacterDisplayedWithCurrentValue() {
-        hungerBar.decreaseBar(30); //currentValue = 85
+        tirednessBar.decreaseBar(5); //currentValue = 20
         int nbFullChar = 0;
-        String display = hungerBar.displayBar();
+        String display = tirednessBar.displayBar();
         for(int i = 0; i < display.length(); ++i) {
             if (display.charAt(i) == '#') {
                 nbFullChar++;
             }
         }
-        assertEquals(nbFullChar, 8);
+        assertEquals(nbFullChar, 4);
     }
 }
