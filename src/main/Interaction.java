@@ -15,28 +15,40 @@ import tamagotchi.type.Type;
 import java.util.*;
 
 public class Interaction {
+    /**
+     * List containing all of the tamagotchis, separated by family
+     */
+    private ArrayList<ArrayList<Tamagotchi>> allTamagotchiByFamily;
 
-    private ArrayList<ArrayList<Tamagotchi>> allTamagotchiByFammily;
+    /**
+     * The tamagotchi currently selected
+     */
+    private Tamagotchi currentTamagotchi;
 
-    private Tamagotchi actualTamagotchi;
-
+    /**
+     * HashMap storing the jokes that a tamagotchi can tell, as well as their respective id
+     */
     public static HashMap<Integer,String> jokes = new HashMap<Integer,String>();
     static {
         //creating the joke
         jokes.put(1,"Why do cows wear bells?\nBecause their horns don't work."); //soft
-        jokes.put(2,"I threw a boomerang a few year ago.\nAnd now i live in a constant fear");  //medium
-        jokes.put(3,"A Roman legionnaire walks into a bar, holds up two finger ans say,\n\"Five beers, please.\""); //not funny
-        jokes.put(4,"You don't need a parachute to go skydiving.\nYou need a parachute to skydiving twice."); //Dark
+        jokes.put(2,"I threw a boomerang a few years ago.\nAnd now I live in a constant fear");  //medium
+        jokes.put(3,"A Roman legionnaire walks into a bar, holds up two finger and says,\n\"Five beers, please.\""); //not funny
+        jokes.put(4,"You don't need a parachute to go skydiving.\nYou need a parachute to go skydiving twice."); //Dark
 
     }
 
+    /**
+     * Sorts Tamagotchi by hunger
+     * @return ArrayList<Tamagotchi> : list sorted by hunger
+     */
      private ArrayList<Tamagotchi> sortByHunger(){
         //recuperation of all tamagotchi in one List
          ArrayList<Tamagotchi> sortTamagotchi = new ArrayList<Tamagotchi>();
 
-         for (ArrayList<Tamagotchi> family : this.allTamagotchiByFammily) {
-             for (Tamagotchi actualTamagotchi : family) {
-                 sortTamagotchi.add(actualTamagotchi);
+         for (ArrayList<Tamagotchi> family : this.allTamagotchiByFamily) {
+             for (Tamagotchi currentTamagotchi : family) {
+                 sortTamagotchi.add(currentTamagotchi);
              }
          }
 
@@ -63,13 +75,17 @@ public class Interaction {
          return sortTamagotchi;
      }
 
+    /**
+     * Sorts Tamagotchi by tiredness
+     * @return ArrayList<Tamagotchi> : list sorted by tiredness
+     */
     private ArrayList<Tamagotchi> sortByTiredness(){
         //recuperation of all tamagotchi in one List
         ArrayList<Tamagotchi> sortTamagotchi = new ArrayList<Tamagotchi>();
 
-        for (ArrayList<Tamagotchi> family : this.allTamagotchiByFammily) {
-            for (Tamagotchi actualTamagotchi : family) {
-                sortTamagotchi.add(actualTamagotchi);
+        for (ArrayList<Tamagotchi> family : this.allTamagotchiByFamily) {
+            for (Tamagotchi currentTamagotchi : family) {
+                sortTamagotchi.add(currentTamagotchi);
             }
         }
 
@@ -96,13 +112,17 @@ public class Interaction {
         return sortTamagotchi;
     }
 
+    /**
+     * Sorts Tamagotchi by happiness
+     * @return ArrayList<Tamagotchi> : list sorted by happiness
+     */
     private ArrayList<Tamagotchi> sortByHappiness(){
         //recuperation of all tamagotchi in one List
         ArrayList<Tamagotchi> sortTamagotchi = new ArrayList<Tamagotchi>();
 
-        for (ArrayList<Tamagotchi> family : this.allTamagotchiByFammily) {
-            for (Tamagotchi actualTamagotchi : family) {
-                sortTamagotchi.add(actualTamagotchi);
+        for (ArrayList<Tamagotchi> family : this.allTamagotchiByFamily) {
+            for (Tamagotchi currentTamagotchi : family) {
+                sortTamagotchi.add(currentTamagotchi);
             }
         }
 
@@ -130,9 +150,9 @@ public class Interaction {
     }
 
     public Interaction() {
-        actualTamagotchi = null;
+        currentTamagotchi = null;
 
-        this.allTamagotchiByFammily = new ArrayList<ArrayList<Tamagotchi>>();
+        this.allTamagotchiByFamily = new ArrayList<ArrayList<Tamagotchi>>();
 
         //create and add all tamagotchi
 
@@ -154,8 +174,8 @@ public class Interaction {
         Tamagotchi giovanni = new LigthningElf("Giovanny");
         elves.add(giovanni);
 
-        this.allTamagotchiByFammily.add(elves);
-        this.allTamagotchiByFammily.add(fairies);
+        this.allTamagotchiByFamily.add(elves);
+        this.allTamagotchiByFamily.add(fairies);
     }
 
     public static void main(String[] args) {
@@ -186,19 +206,19 @@ public class Interaction {
                         break;
                     }
                     //decreasing all bars
-                    for (ArrayList<Tamagotchi> family : interaction.allTamagotchiByFammily) {
-                        for (Tamagotchi actualTamagotchi : family) {
-                            actualTamagotchi.getHungerBar().decreaseBar((int) (actualTamagotchi.getHungerBar().getMax()*0.1));
-                            actualTamagotchi.getHappinessBar().decreaseBar((int) (actualTamagotchi.getHappinessBar().getMax()*0.07));
+                    for (ArrayList<Tamagotchi> family : interaction.allTamagotchiByFamily) {
+                        for (Tamagotchi currentTamagotchi : family) {
+                            currentTamagotchi.getHungerBar().decreaseBar((int) (currentTamagotchi.getHungerBar().getMax()*0.1));
+                            currentTamagotchi.getHappinessBar().decreaseBar((int) (currentTamagotchi.getHappinessBar().getMax()*0.07));
                             //For fairy flying
-                            if (actualTamagotchi instanceof Fairy && ((Fairy) actualTamagotchi).isFlying()){
+                            if (currentTamagotchi instanceof Fairy && ((Fairy) currentTamagotchi).isFlying()){
                                 if (new Random().nextInt(10) > 7){
-                                    ((Fairy) actualTamagotchi).stopFly();
+                                    ((Fairy) currentTamagotchi).stopFly();
                                 }
                                 //tired x2 because flying
-                                actualTamagotchi.getTirenessBar().decreaseBar((int) (actualTamagotchi.getTirenessBar().getMax()*0.1));
+                                currentTamagotchi.getTirenessBar().decreaseBar((int) (currentTamagotchi.getTirenessBar().getMax()*0.1));
                             } else{
-                                actualTamagotchi.getTirenessBar().decreaseBar((int) (actualTamagotchi.getTirenessBar().getMax()*0.05));
+                                currentTamagotchi.getTirenessBar().decreaseBar((int) (currentTamagotchi.getTirenessBar().getMax()*0.05));
                             }
                         }
                     }
@@ -246,11 +266,11 @@ public class Interaction {
                     }
                 } else if (userMessageSplit.length == 1) {
                     try {
-                        System.out.println("Actual : " + interaction.actualTamagotchi.getName() + "\n");
+                        System.out.println("Current : " + interaction.currentTamagotchi.getName() + "\n");
                     } catch (Exception exception) {
-                        System.out.println("Actual : no one\n");
+                        System.out.println("Current : no one\n");
                     }
-                    for (ArrayList<Tamagotchi> family : interaction.allTamagotchiByFammily) {
+                    for (ArrayList<Tamagotchi> family : interaction.allTamagotchiByFamily) {
                         if (family.size() > 0) {
                             System.out.println(family.get(0).getRace() + " :");
                         }
@@ -277,13 +297,13 @@ public class Interaction {
                     String name = new String(userMessageSplit[1]);
                     boolean isTamagotchiNotExist = true;
 
-                    for (ArrayList<Tamagotchi> family : interaction.allTamagotchiByFammily) {
-                        for (Tamagotchi actualTamagotchi : family) {
-                            if (actualTamagotchi.getName().equals(name)) {
-                                interaction.actualTamagotchi = actualTamagotchi;
+                    for (ArrayList<Tamagotchi> family : interaction.allTamagotchiByFamily) {
+                        for (Tamagotchi currentTamagotchi : family) {
+                            if (currentTamagotchi.getName().equals(name)) {
+                                interaction.currentTamagotchi = currentTamagotchi;
                                 isTamagotchiNotExist = false;
 
-                                System.out.println("Go to the " + actualTamagotchi.getName() + " cage!");
+                                System.out.println("Went to the " + currentTamagotchi.getName() + " cage!");
                             }
                         }
                     }
@@ -293,14 +313,14 @@ public class Interaction {
                 }
                 //for unknown command with a see prefix
                 else{
-                    System.out.println("Too much argument ! Please type Help");
+                    System.out.println("Too many arguments ! Please type Help");
                 }
             }
             else if (userMessageSplit[0].equals("exit")){
                 System.out.println("See you soon");
             }
             //verify if user type a command for a specific Tamagotchi
-            else if (interaction.actualTamagotchi != null){
+            else if (interaction.currentTamagotchi != null){
                 if (userMessageSplit[0].equals("joke")){
 
                     System.out.println("Select a joke :");
@@ -313,7 +333,7 @@ public class Interaction {
                     //parse userChoice
                     try{
                         //display the tamagotchi joke reaction
-                        System.out.println(interaction.actualTamagotchi.joke(Integer.parseInt(userChoice)));
+                        System.out.println(interaction.currentTamagotchi.joke(Integer.parseInt(userChoice)));
                     }
                     catch(NumberFormatException nfe){
                         System.out.println("Invalid joke number! Please select a correct number!");
@@ -321,10 +341,10 @@ public class Interaction {
                 }
                 else if(userMessageSplit[0].equals("information")){
                     //display information
-                    System.out.println(interaction.actualTamagotchi.displayInformation());
+                    System.out.println(interaction.currentTamagotchi.displayInformation());
                 }
                 else if (userMessageSplit[0].equals("feed")){
-                    System.out.println("You what to feed " + interaction.actualTamagotchi.getName() + " with witch food ?\n\"1\" for a steak\n\"2\" for a salad\n\"3\" for a Tiramisu");
+                    System.out.println("You what to feed " + interaction.currentTamagotchi.getName() + " with witch food ?\n\"1\" for a steak\n\"2\" for a salad\n\"3\" for a Tiramisu");
 
                     String userChoice = inputScanner.nextLine().trim(); //user input
 
@@ -334,98 +354,98 @@ public class Interaction {
                         int mealInt = Integer.parseInt(userChoice);
                         switch (mealInt){
                             case 1:
-                                interaction.actualTamagotchi.feed(50);
+                                interaction.currentTamagotchi.feed(50);
                                 break;
                             case 2:
-                                interaction.actualTamagotchi.feed(15);
+                                interaction.currentTamagotchi.feed(15);
                                 break;
                             case 3:
-                                interaction.actualTamagotchi.feed(30);
+                                interaction.currentTamagotchi.feed(30);
                                 break;
                         }
 
-                        System.out.println(interaction.actualTamagotchi.getName() + " enjoy th meal...\n" + interaction.actualTamagotchi.getHungerBar().displayBar());
+                        System.out.println(interaction.currentTamagotchi.getName() + " enjoys the meal...\n" + interaction.currentTamagotchi.getHungerBar().displayBar());
                     }
                     catch(NumberFormatException nfe){
                         System.out.println("Invalid food number! Please select a correct number!");
                     }
                 }
                 else if (userMessageSplit[0].equals("pet")){
-                    System.out.println(interaction.actualTamagotchi.pet());
+                    System.out.println(interaction.currentTamagotchi.pet());
                 }
                 else if (userMessageSplit[0].equals("sleep")){
-                    System.out.println(interaction.actualTamagotchi.sleep());
+                    System.out.println(interaction.currentTamagotchi.sleep());
                 }
                 else if (userMessageSplit[0].equals("fly")){
-                    if (interaction.actualTamagotchi instanceof Fairy){
-                        System.out.println(((Fairy) interaction.actualTamagotchi).fly());
+                    if (interaction.currentTamagotchi instanceof Fairy){
+                        System.out.println(((Fairy) interaction.currentTamagotchi).fly());
                     }
                     else {
-                        System.out.println(interaction.actualTamagotchi.getName() + " is not an fairy, chose an fairy to use \"fly\" command");
+                        System.out.println(interaction.currentTamagotchi.getName() + " is not an fairy, chose a fairy to use \"fly\" command");
                     }
                 }
                 else if (userMessageSplit[0].equals("retort")){
-                    if (interaction.actualTamagotchi instanceof Elf){
-                        System.out.println(((Elf) interaction.actualTamagotchi).sillyRetort());
+                    if (interaction.currentTamagotchi instanceof Elf){
+                        System.out.println(((Elf) interaction.currentTamagotchi).sillyRetort());
                     }
                     else {
-                        System.out.println(interaction.actualTamagotchi.getName() + " is not an elf, chose an elf to use \"retort\" command");
+                        System.out.println(interaction.currentTamagotchi.getName() + " is not an elf, chose an elf to use \"retort\" command");
                     }
                 }
                 else if (userMessageSplit[0].equals("whoHasBiggest")){
-                    if (interaction.actualTamagotchi instanceof Elf){
-                        System.out.println(((Elf) interaction.actualTamagotchi).sayHeHasBiggest());
+                    if (interaction.currentTamagotchi instanceof Elf){
+                        System.out.println(((Elf) interaction.currentTamagotchi).sayHeHasBiggest());
                     }
                     else {
-                        System.out.println(interaction.actualTamagotchi.getName() + " is not an elf, chose an elf to use \"whoHasBiggest\" command");
+                        System.out.println(interaction.currentTamagotchi.getName() + " is not an elf, chose an elf to use \"whoHasBiggest\" command");
                     }
                 }
                 else if (userMessageSplit[0].equals("music")){
-                    if (interaction.actualTamagotchi instanceof Elf){
-                        System.out.println(((Elf) interaction.actualTamagotchi).playAnInstrument());
+                    if (interaction.currentTamagotchi instanceof Elf){
+                        System.out.println(((Elf) interaction.currentTamagotchi).playAnInstrument());
                     }
                     else {
-                        System.out.println(interaction.actualTamagotchi.getName() + " is not an elf, chose an elf to use \"music\" command");
+                        System.out.println(interaction.currentTamagotchi.getName() + " is not an elf, chose an elf to use \"music\" command");
                     }
                 }
                 else if (userMessageSplit[0].equals("power")){
-                    if (interaction.actualTamagotchi instanceof Fairy){
-                        System.out.println(((Fairy) interaction.actualTamagotchi).usePower());
+                    if (interaction.currentTamagotchi instanceof Fairy){
+                        System.out.println(((Fairy) interaction.currentTamagotchi).usePower());
                     }
                     else {
-                        System.out.println(interaction.actualTamagotchi.getName() + " is not an fairy, chose an fairy to use \"power\" command");
+                        System.out.println(interaction.currentTamagotchi.getName() + " is not a fairy, chose an fairy to use \"power\" command");
                     }
                 }
                 else if (userMessageSplit[0].equals("cry")){
-                    if (interaction.actualTamagotchi.getType() == Type.DARK){
-                        System.out.println(((Dark) interaction.actualTamagotchi).cry());
+                    if (interaction.currentTamagotchi.getType() == Type.DARK){
+                        System.out.println(((Dark) interaction.currentTamagotchi).cry());
                     }
                     else {
-                        System.out.println(interaction.actualTamagotchi.getName() + " is not dark, chose a tamagotchi with dark type to use \"cry\" command");
+                        System.out.println(interaction.currentTamagotchi.getName() + " is not dark, chose a tamagotchi with dark type to use \"cry\" command");
                     }
                 }
                 else if (userMessageSplit[0].equals("complain")){
-                    if (interaction.actualTamagotchi.getType() == Type.DARK){
-                        System.out.println(((Dark) interaction.actualTamagotchi).complain());
+                    if (interaction.currentTamagotchi.getType() == Type.DARK){
+                        System.out.println(((Dark) interaction.currentTamagotchi).complain());
                     }
                     else {
-                        System.out.println(interaction.actualTamagotchi.getName() + " is not dark, chose a tamagotchi with dark type to use \"complain\" command");
+                        System.out.println(interaction.currentTamagotchi.getName() + " is not dark, chose a tamagotchi with dark type to use \"complain\" command");
                     }
                 }
                 else if (userMessageSplit[0].equals("kiss")){
-                    if (interaction.actualTamagotchi.getType() == Type.LIGHTNING){
-                        System.out.println(((Lightning) interaction.actualTamagotchi).kiss());
+                    if (interaction.currentTamagotchi.getType() == Type.LIGHTNING){
+                        System.out.println(((Lightning) interaction.currentTamagotchi).kiss());
                     }
                     else {
-                        System.out.println(interaction.actualTamagotchi.getName() + " is not lightning, chose a tamagotchi with lightning type to use \"kiss\" command");
+                        System.out.println(interaction.currentTamagotchi.getName() + " is not lightning, chose a tamagotchi with lightning type to use \"kiss\" command");
                     }
                 }
                 else if (userMessageSplit[0].equals("compliment")){
-                    if (interaction.actualTamagotchi.getType() == Type.LIGHTNING){
-                        System.out.println(((Lightning) interaction.actualTamagotchi).compliment());
+                    if (interaction.currentTamagotchi.getType() == Type.LIGHTNING){
+                        System.out.println(((Lightning) interaction.currentTamagotchi).compliment());
                     }
                     else {
-                        System.out.println(interaction.actualTamagotchi.getName() + " is not lightning, chose a tamagotchi with lightning type to use \"compliment\" command");
+                        System.out.println(interaction.currentTamagotchi.getName() + " is not lightning, chose a tamagotchi with lightning type to use \"compliment\" command");
                     }
                 }
                 else{
@@ -441,7 +461,7 @@ public class Interaction {
                 }
             }
         }
-        //for stop the game
+        //To stop the game
         barManagement.interrupt();
     }
 }
