@@ -86,6 +86,28 @@ public class Interaction {
     }
 
     /**
+     * Return true if the specified object is in the given array
+     * @param array The array i which you want to search the item
+     * @param item The element to search in the given array
+     * @param <T>
+     * @return boolean
+     */
+    private <T> boolean contain(T[] array, T item, int start){
+        int count = 0;
+        for (T element : array) {
+            if (count >= start){
+                if (element.equals(item)){
+                    return true;
+                }
+            }
+            else{
+                ++count;
+            }
+        }
+        return false;
+    }
+
+    /**
      * Sorts Tamagotchi by hunger
      * @return ArrayList<Tamagotchi> : list sorted by hunger
      */
@@ -337,6 +359,63 @@ public class Interaction {
             else if (userMessageSplit[0].equals("exit")){
                 System.out.println("See you soon");
             }
+            //help command
+            else if (userMessageSplit[0].equals("help")){
+                if (userMessageSplit.length == 1 || interaction.contain(userMessageSplit, "seeAll")){
+                    System.out.println("\tseeAll : \n\t\thunger : display all Tamagotchies sorted by hunger and display name, race, type and hunger bar\n\t\thappiness : display all Tamagotchies sorted by happiness and display name, race, type and happiness bar\n\t\ttiredness : display all Tamagotchies sorted by tiredness and display name, race, type and tiredness bar\n\t\tno arguments : display all Tamagotchies order by families and display name, type and graphical representation\n");
+                }
+                if (userMessageSplit.length == 1 || interaction.contain(userMessageSplit, "see")){
+                    System.out.println("\tsee : \n\t\t\"name of a tamagotchi\" : go to the given tamagotchi cage, and allows you to do stuff with him\n");
+                }
+                if (userMessageSplit.length == 1 || interaction.contain(userMessageSplit, "joke")){
+                    System.out.println("\tjoke : \n\t\tno arguments : need to be in the cage of a tamagotchi, and increased or decreased his happiness depending on the chosen joke\n");
+                }
+                if (userMessageSplit.length == 1 || interaction.contain(userMessageSplit, "pet")){
+                    System.out.println("\tpet : \n\t\tno arguments : need to be in the cage of a tamagotchi, and increased his happiness with a random value\n");
+                }
+                if (userMessageSplit.length == 1 || interaction.contain(userMessageSplit, "sleep")){
+                    System.out.println("\tsleep : \n\t\tno arguments : need to be in the cage of a tamagotchi, and increased tiredness depending with a random value\n");
+                }
+                if (userMessageSplit.length == 1 || interaction.contain(userMessageSplit, "information")){
+                    System.out.println("\tinformation : \n\t\tno arguments : need to be in the cage of a tamagotchi, and display all vitals of this tamagotchi\n");
+                }
+                if (userMessageSplit.length == 1 || interaction.contain(userMessageSplit, "fly")){
+                    System.out.println("\tfly : \n\t\tno arguments : need to be in the cage of a Fairy, the fairy starts to fly if she is not already flying, when she flies she gets twice as tired\n");
+                }
+                if (userMessageSplit.length == 1 || interaction.contain(userMessageSplit, "retort")){
+                    System.out.println("\tretort : \n\t\tno arguments : need to be in the cage of an elf, the elf throws you a haughty retort, typical among elves\n");
+                }
+                if (userMessageSplit.length == 1 || interaction.contain(userMessageSplit, "whoHasBiggest")){
+                    System.out.println("\twhoHasBiggest : \n\t\tno arguments : need to be in the cage of an elf, the elf  tells you the size of his ears and he is proud of it\n");
+                }
+                if (userMessageSplit.length == 1 || interaction.contain(userMessageSplit, "music")){
+                    System.out.println("\tmusic : \n\t\tno arguments : need to be in the cage of an elf, the elf starts playing his favorite instrument\n");
+                }
+                if (userMessageSplit.length == 1 || interaction.contain(userMessageSplit, "power")){
+                    System.out.println("\tpower : \n\t\tno arguments : need to be in the cage of a Fairy, and she does a pretty spell\n");
+                }
+                if (userMessageSplit.length == 1 || interaction.contain(userMessageSplit, "cry")){
+                    System.out.println("\tcry : \n\t\tno arguments : need to be in the cage of a dark tamagotchi, the tamagotchi cries all the tears of his body\n");
+                }
+                if (userMessageSplit.length == 1 || interaction.contain(userMessageSplit, "complain")){
+                    System.out.println("\tcomplain : \n\t\tno arguments : need to be in the cage of a dark tamagotchi, the tamagotchi complains about his shitty life\n");
+                }
+                if (userMessageSplit.length == 1 || interaction.contain(userMessageSplit, "kiss")){
+                    System.out.println("\tkiss : \n\t\tno arguments : need to be in the cage of a lightning tamagotchi, the tamagotchi gives you a kiss\n");
+                }
+                if (userMessageSplit.length == 1 || interaction.contain(userMessageSplit, "compliment")){
+                    System.out.println("\tcompliment : \n\t\tno arguments : need to be in the cage of a lightning tamagotchi, the tamagotchi gives you a kindfull compliment\n");
+                }
+                if (userMessageSplit.length == 1 || interaction.contain(userMessageSplit, "collectiveHappiness")){
+                    System.out.println("\tcollectiveHappiness : \n\t\tno arguments : the fairy casts a happiness spell on all the tamagotchi\n");
+                }
+                if (userMessageSplit.length == 1 || interaction.contain(userMessageSplit, "exit")){
+                    System.out.println("\texit : \n\t\tno arguments : exit this game\n");
+                }
+                if (userMessageSplit.length == 1 || interaction.contain(userMessageSplit, "help", 1)){
+                    System.out.println("\thelp : \n\t\t\"name of a command\" (multiargs)) : display the help of given commands\n\t\tno arguments : display this\n");
+                }
+            }
             //verify if user type a command for a specific Tamagotchi
             else if (interaction.currentTamagotchi != null){
                 if (userMessageSplit[0].equals("joke")){
@@ -476,6 +555,7 @@ public class Interaction {
                                 currentTamagotchi.getHappinessBar().increaseBar(happinessIncrement);
                             }
                         }
+                        System.out.println(interaction.currentTamagotchi.getName() + " casts a spell that makes everyone happier\n");
                         //display all tamagotchies bar's sorted by happiness
                         for (Tamagotchi tamagotchi : interaction.sortByHappiness()) {
                             System.out.println("\tName : " + tamagotchi.getName());
@@ -492,10 +572,11 @@ public class Interaction {
                     System.out.println("Unknown command ! Please type \"Help\" to see all commands");
                 }
             }
-            else if (userMessageSplit[0].equals("help")){
-                if (userMessageSplit.length == 1 || interaction.contain(userMessageSplit, "seeAll")){
-
-                }
+            else if (userMessageSplit[0].equals("feed") || userMessageSplit[0].equals("joke") || userMessageSplit[0].equals("pet") || userMessageSplit[0].equals("sleep") || userMessageSplit[0].equals("information") || userMessageSplit[0].equals("sleep") || userMessageSplit[0].equals("fly") || userMessageSplit[0].equals("retort") || userMessageSplit[0].equals("whoHasBiggest") || userMessageSplit[0].equals("music")|| userMessageSplit[0].equals("power") || userMessageSplit[0].equals("cry") || userMessageSplit[0].equals("complain") || userMessageSplit[0].equals("kiss") || userMessageSplit[0].equals("compliment") || userMessageSplit[0].equals("collectiveHappiness")){
+                System.out.println("You need to see a specific Tamagotchi with \"see\" command");
+            }
+            else{
+                System.out.println("Unknown command ! Please type \"Help\" to see all commands");
             }
         }
         //To stop the game
