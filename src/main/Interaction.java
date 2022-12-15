@@ -1,6 +1,8 @@
 
 
 
+import bar.Bar;
+import bar.HungerBar;
 import tamagotchi.Tamagotchi;
 import tamagotchi.elf.DarkElf;
 import tamagotchi.elf.Elf;
@@ -36,6 +38,35 @@ public class Interaction {
         jokes.put(3,"A Roman legionnaire walks into a bar, holds up two finger and says,\n\"Five beers, please.\""); //not funny
         jokes.put(4,"You don't need a parachute to go skydiving.\nYou need a parachute to go skydiving twice."); //Dark
 
+    }
+
+    public Interaction() {
+        currentTamagotchi = null;
+
+        this.allTamagotchiByFamily = new ArrayList<ArrayList<Tamagotchi>>();
+
+        //create and add all tamagotchi
+
+        //fairy family
+        ArrayList<Tamagotchi> fairies = new ArrayList<>();
+
+        Tamagotchi loue = new DarkFairy("Loue");
+        fairies.add(loue);
+
+        Tamagotchi elisa = new LigthningFairy("Elisa");
+        fairies.add(elisa);
+
+        //Elf family
+        ArrayList<Tamagotchi> elves = new ArrayList<>();
+
+        Tamagotchi urbain = new DarkElf("Urbain");
+        elves.add(urbain);
+
+        Tamagotchi giovanni = new LigthningElf("Giovanny");
+        elves.add(giovanni);
+
+        this.allTamagotchiByFamily.add(elves);
+        this.allTamagotchiByFamily.add(fairies);
     }
 
     /**
@@ -147,35 +178,6 @@ public class Interaction {
         }
 
         return sortTamagotchi;
-    }
-
-    public Interaction() {
-        currentTamagotchi = null;
-
-        this.allTamagotchiByFamily = new ArrayList<ArrayList<Tamagotchi>>();
-
-        //create and add all tamagotchi
-
-        //fairy family
-        ArrayList<Tamagotchi> fairies = new ArrayList<>();
-
-        Tamagotchi loue = new DarkFairy("Loue");
-        fairies.add(loue);
-
-        Tamagotchi elisa = new LigthningFairy("Elisa");
-        fairies.add(elisa);
-
-        //Elf family
-        ArrayList<Tamagotchi> elves = new ArrayList<>();
-
-        Tamagotchi urbain = new DarkElf("Urbain");
-        elves.add(urbain);
-
-        Tamagotchi giovanni = new LigthningElf("Giovanny");
-        elves.add(giovanni);
-
-        this.allTamagotchiByFamily.add(elves);
-        this.allTamagotchiByFamily.add(fairies);
     }
 
     public static void main(String[] args) {
@@ -448,12 +450,34 @@ public class Interaction {
                         System.out.println(interaction.currentTamagotchi.getName() + " is not lightning, chose a tamagotchi with lightning type to use \"compliment\" command");
                     }
                 }
+                else if (userMessageSplit[0].equals("collectiveHappiness")){
+                    if (interaction.currentTamagotchi instanceof Fairy){
+                        //increase all the Tamagotchi by the collectiveHappiness level
+                        int happinessIncrement = ((Fairy) interaction.currentTamagotchi).collectiveHappiness();
+
+                        for (ArrayList<Tamagotchi> family : interaction.allTamagotchiByFamily) {
+                            for (Tamagotchi currentTamagotchi : family) {
+                                currentTamagotchi.getHappinessBar().increaseBar(happinessIncrement);
+                            }
+                        }
+                        //display all tamagotchies bar's sorted by happiness
+                        for (Tamagotchi tamagotchi : interaction.sortByHappiness()) {
+                            System.out.println("\tName : " + tamagotchi.getName());
+                            System.out.println("\tRace : " + tamagotchi.getRace());
+                            System.out.println("\tType : " + tamagotchi.getType());
+                            System.out.println(tamagotchi.displayHappinessBar());
+                        }
+                    }
+                    else {
+                        System.out.println(interaction.currentTamagotchi.getName() + " is not a fairy, chose an fairy to use \"collectiveHappiness\" command");
+                    }
+                }
                 else{
                     System.out.println("Unknown command ! Please type \"Help\" to see all commands");
                 }
             }
             else {
-                if (userMessageSplit[0].equals("feed") || userMessageSplit[0].equals("joke") || userMessageSplit[0].equals("pet") || userMessageSplit[0].equals("sleep") || userMessageSplit[0].equals("information") || userMessageSplit[0].equals("sleep") || userMessageSplit[0].equals("fly") || userMessageSplit[0].equals("retort") || userMessageSplit[0].equals("whoHasBiggest") || userMessageSplit[0].equals("music")|| userMessageSplit[0].equals("power") || userMessageSplit[0].equals("cry") || userMessageSplit[0].equals("complain") || userMessageSplit[0].equals("kiss") || userMessageSplit[0].equals("compliment")){
+                if (userMessageSplit[0].equals("feed") || userMessageSplit[0].equals("joke") || userMessageSplit[0].equals("pet") || userMessageSplit[0].equals("sleep") || userMessageSplit[0].equals("information") || userMessageSplit[0].equals("sleep") || userMessageSplit[0].equals("fly") || userMessageSplit[0].equals("retort") || userMessageSplit[0].equals("whoHasBiggest") || userMessageSplit[0].equals("music")|| userMessageSplit[0].equals("power") || userMessageSplit[0].equals("cry") || userMessageSplit[0].equals("complain") || userMessageSplit[0].equals("kiss") || userMessageSplit[0].equals("compliment") || userMessageSplit[0].equals("collectiveHappiness")){
                     System.out.println("You need to see a specific Tamagotchi with \"see\" command");
                 }
                 else{
