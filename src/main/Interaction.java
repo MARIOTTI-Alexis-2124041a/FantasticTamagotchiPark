@@ -70,6 +70,22 @@ public class Interaction {
     }
 
     /**
+     * Return true if the specified object is in the given array
+     * @param array The array i which you want to search the item
+     * @param item The element to search in the given array
+     * @param <T>
+     * @return boolean
+     */
+    private <T> boolean contain(T[] array, T item){
+        for (T element : array) {
+            if (element.equals(item)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * Sorts Tamagotchi by hunger
      * @return ArrayList<Tamagotchi> : list sorted by hunger
      */
@@ -476,12 +492,9 @@ public class Interaction {
                     System.out.println("Unknown command ! Please type \"Help\" to see all commands");
                 }
             }
-            else {
-                if (userMessageSplit[0].equals("feed") || userMessageSplit[0].equals("joke") || userMessageSplit[0].equals("pet") || userMessageSplit[0].equals("sleep") || userMessageSplit[0].equals("information") || userMessageSplit[0].equals("sleep") || userMessageSplit[0].equals("fly") || userMessageSplit[0].equals("retort") || userMessageSplit[0].equals("whoHasBiggest") || userMessageSplit[0].equals("music")|| userMessageSplit[0].equals("power") || userMessageSplit[0].equals("cry") || userMessageSplit[0].equals("complain") || userMessageSplit[0].equals("kiss") || userMessageSplit[0].equals("compliment") || userMessageSplit[0].equals("collectiveHappiness")){
-                    System.out.println("You need to see a specific Tamagotchi with \"see\" command");
-                }
-                else{
-                    System.out.println("Unknown command ! Please type \"Help\" to see all commands");
+            else if (userMessageSplit[0].equals("help")){
+                if (userMessageSplit.length == 1 || interaction.contain(userMessageSplit, "seeAll")){
+
                 }
             }
         }
