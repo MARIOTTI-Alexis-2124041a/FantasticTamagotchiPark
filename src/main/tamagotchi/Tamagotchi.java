@@ -58,7 +58,7 @@ public abstract class Tamagotchi {
         return type;
     }
     public String displayInformation() {
-        return name + "vitals :\n" + hungerBar.displayBar() + "\n" + tirenessBar.displayBar() + "\n" + happinessBar.displayBar();
+        return name + " vitals :\n" + hungerBar.displayBar() + "\n" + tirenessBar.displayBar() + "\n" + happinessBar.displayBar();
     }
 
     public void feed (int quantity) {
