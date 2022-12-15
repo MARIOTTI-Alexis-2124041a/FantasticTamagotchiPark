@@ -7,9 +7,9 @@ import tamagotchi.type.Type;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class LigthningElf extends Elf implements Lightning {
+public class LightningElf extends Elf implements Lightning {
 
-    public LigthningElf(String name) {
+    public LightningElf(String name) {
         super(name, Race.ELF, Type.LIGHTNING);
     }
 
@@ -25,10 +25,10 @@ public class LigthningElf extends Elf implements Lightning {
                 getHappinessBar().increaseBar(30); // Type of joke = lovely
                 break;
             case 2 :
-                getHappinessBar().increaseBar(40); // Type of joke = kind
+                getHappinessBar().increaseBar(40); // Type of joke = medium
                 break;
             case 3 :
-                getHappinessBar().decreaseBar(20); // Type of joke = bad
+                getHappinessBar().decreaseBar(20); // Type of joke = not funny
                 break;
             case 4 :
                 getHappinessBar().decreaseBar(30); // Type of joke = nasty
@@ -97,7 +97,7 @@ public class LigthningElf extends Elf implements Lightning {
     }
 
     public static void main(String args[]) {
-        LigthningElf ligthningElf = new LigthningElf("elf");
+        LightningElf ligthningElf = new LightningElf("elf");
         System.out.println(ligthningElf.playAnInstrument());
         System.out.println(ligthningElf.toString());
         System.out.println(ligthningElf.kiss());

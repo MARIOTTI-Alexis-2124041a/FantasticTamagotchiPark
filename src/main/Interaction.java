@@ -1,15 +1,10 @@
-
-
-
-import bar.Bar;
-import bar.HungerBar;
 import tamagotchi.Tamagotchi;
 import tamagotchi.elf.DarkElf;
 import tamagotchi.elf.Elf;
-import tamagotchi.elf.LigthningElf;
+import tamagotchi.elf.LightningElf;
 import tamagotchi.fairy.DarkFairy;
 import tamagotchi.fairy.Fairy;
-import tamagotchi.fairy.LigthningFairy;
+import tamagotchi.fairy.LightningFairy;
 import tamagotchi.type.Dark;
 import tamagotchi.type.Lightning;
 import tamagotchi.type.Type;
@@ -53,7 +48,7 @@ public class Interaction {
         Tamagotchi loue = new DarkFairy("Loue");
         fairies.add(loue);
 
-        Tamagotchi elisa = new LigthningFairy("Elisa");
+        Tamagotchi elisa = new LightningFairy("Elisa");
         fairies.add(elisa);
 
         //Elf family
@@ -62,7 +57,7 @@ public class Interaction {
         Tamagotchi urbain = new DarkElf("Urbain");
         elves.add(urbain);
 
-        Tamagotchi giovanni = new LigthningElf("Giovanny");
+        Tamagotchi giovanni = new LightningElf("Giovanny");
         elves.add(giovanni);
 
         this.allTamagotchiByFamily.add(elves);

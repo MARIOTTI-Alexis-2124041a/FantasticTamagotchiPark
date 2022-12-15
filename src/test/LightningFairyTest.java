@@ -1,6 +1,6 @@
 import org.junit.Test;
 import tamagotchi.Race;
-import tamagotchi.fairy.LigthningFairy;
+import tamagotchi.fairy.LightningFairy;
 import tamagotchi.type.Type;
 
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import static org.junit.Assert.assertTrue;
 
 public class LightningFairyTest {
 
-    private LigthningFairy lightningFairy = new LigthningFairy("Loue");
+    private LightningFairy lightningFairy = new LightningFairy("Loue");
 
     @Test
     public void testIsFlyingInitial() {

@@ -7,9 +7,9 @@ import tamagotchi.type.Type;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class LigthningFairy extends Fairy implements Lightning {
+public class LightningFairy extends Fairy implements Lightning {
 
-    public LigthningFairy(String name) {
+    public LightningFairy(String name) {
         super(name, Race.FAIRY, Type.LIGHTNING);
     }
 
@@ -100,7 +100,7 @@ public class LigthningFairy extends Fairy implements Lightning {
     }
 
     public static void main(String args[]) {
-        LigthningFairy ligthningFairy = new LigthningFairy("jj");
+        LightningFairy ligthningFairy = new LightningFairy("jj");
         System.out.println(ligthningFairy.usePower());
         System.out.println(ligthningFairy.kiss());
     }
